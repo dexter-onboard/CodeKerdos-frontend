@@ -1,0 +1,27 @@
+/* App.css */
+
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+/* 
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+} */
+
+
+#content {
+    opacity: 0; /* Start with invisible content */
+    transition: opacity 1s ease-in-out; /* Smooth transition over 1 second */
+    min-height: 100vh;
+  }
+  
+  #content.fade-in {
+    opacity: 1; /* Fade in when the preloader is done */
+  }
+  

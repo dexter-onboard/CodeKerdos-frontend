@@ -1,0 +1,110 @@
+  :root {
+    --shadow-scale: 1.1;
+    --letter-spacing: calc(300em / 1000);
+    --initial-skew: -40deg;
+    --hover-skew: -10deg;
+    --animation-duration: 0.3s;
+    --shadow-initial-skew: calc((var(--initial-skew) / 2) * -1);
+    --shadow-hover-skew: calc((var(--hover-skew) / 2) * -1);
+  }
+  
+  /* Styles */
+   .heading_p{
+    color: white;
+    font-family: 'Avenir Next', 'Helvetica Neue', Helvetica, Tahoma, sans-serif;
+    font-size: 1em;
+    padding-top: 10rem;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #10172A;
+  }
+
+  
+  .heading_p .word {
+    display: inline-block;
+  }
+  
+  .heading_p .char {
+    display: inline-block;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    -webkit-font-smoothing: antialiased;
+    transition: transform ease-out var(--animation-duration);
+    /* color: red; */
+  }
+  
+  .heading_p .char::before,
+  .heading_p .char::after {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    transform-origin: left top;
+    transition: all ease-out var(--animation-duration);
+    content: attr(data-text);
+  }
+  
+  .heading_p .char::before {
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.2);
+    transform: scale(var(--shadow-scale), 1) skew(0deg, var(--shadow-initial-skew));
+  }
+  
+  .heading_p .char::after {
+    z-index: 2;
+    color: var(--codepen-blue);
+    text-shadow: -1px 0 1px var(--codepen-blue), 1px 0 1px rgba(0, 0, 0, 0.8);
+    transform: rotateY(var(--initial-skew));
+  }
+  
+  .heading_p .char:hover::before {
+    transform: scale(var(--shadow-scale), 1) skew(0deg, var(--shadow-hover-skew));
+  }
+  
+  .heading_p .char:hover::after {
+    color: #397FF6;
+    transform: rotateY(var(--hover-skew));
+  }
+  
+  .heading_p .char + .char {
+    margin-left: var(--letter-spacing);
+  }
+  
+  /* Responsive font sizes */
+  @media (min-width: 20em) {
+    .heading_p {
+      font-size: 2em;
+    }
+  
+    .heading_p .char::before,
+    .heading_p .char::after {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 30em) {
+    .heading_p {
+      font-size: 3em;
+    }
+  }
+  
+  @media (min-width: 40em) {
+    .heading_p {
+      font-size: 5em;
+    }
+  }
+  
+  @media (min-width: 60em) {
+    .heading_p {
+      font-size: 8em;
+    }
+  }
+  
+  /* Space between words */
+  .heading_p .space {
+    display: inline-block;
+    width: 0.3em; /* Adjust for desired spacing */
+  }

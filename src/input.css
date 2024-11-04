@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.masked-element {
+    /* -webkit-mask-image: url('/mask.svg'); For WebKit browsers */
+    mask-image: url('./assets/mask.svg'); /* For other browsers */
+    mask-size: 40px; /* Size of the mask */
+    -webkit-mask-size: 40px; /* For WebKit browsers */
+    mask-repeat: no-repeat; /* Do not repeat the mask */
+    -webkit-mask-repeat: no-repeat; /* For WebKit browsers */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem; /* Equivalent to text-6xl */
+    background-color: black; /* Background color */
+    color: white; /* Text color */
+    position: absolute; /* Positioning */
+    z-index: 1; /* Adjust z-index if needed */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+}

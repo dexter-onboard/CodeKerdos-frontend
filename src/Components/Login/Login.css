@@ -1,0 +1,5 @@
+.loginForm {
+  box-shadow: 1px 1px 70px 40px rgb(12, 12, 12);
+  position: relative;
+  z-index: 10;
+}

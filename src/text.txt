@@ -1,0 +1,96 @@
+<div
+      style={{
+        backgroundImage:`url(${bg})`,
+        backgroundSize: 'cover', // Cover the entire div
+        backgroundRepeat: 'no-repeat', // Prevent the GIF from repeating
+        backgroundPosition: 'center' // Center the GIF
+        // background:'linear-gradient(151deg, #10172B 50%, #F5F5F5 50%)'
+
+      }}
+      className="h-[100vh] w-full flex items-center justify-center  overflow-hidden">
+      <MaskContainer
+        revealText={
+          <p 
+          style={{  display:'none' }}
+            className="max-w-4xl mx-auto display-none  text-[3rem] text-center text-4xl font-bold">
+           From Zero to Code<span style={{ color: '#17BBF6' }}>'HERO'</span><br/> with '
+            <span style={{ color: '#fff',  }}>Code</span>
+            <span style={{ color: '#17BBF6',  }}>Kerdos</span>'
+            and Bridging the Gap Between Learning & Earning. So,
+            <span style={{ color: 'white' }}>✐</span>
+            <span style={{ fontFamily: '"Bungee Tint", sans-serif' }}>Learn Today, Earn Tomorrow</span>!
+          </p>
+        }
+        className="h-[40rem]  rounded-md text-[3rem]">
+      <span style={{  }}>From Zero to Code<span style={{ color: '#17BBF6' }}>'HERO'</span><br/> with '
+            <span style={{ color: '#fff',  }}>Code</span>
+            <span style={{ color: '#17BBF6',  }}>Kerdos</span>'
+            and Bridging the Gap Between Learning & Earning. So,
+            <span style={{ color: 'white' }}>✐</span>
+            <span style={{ fontFamily: '"Bungee Tint", sans-serif' }}>Learn Today, Earn Tomorrow</span>!</span> 
+      </MaskContainer>
+    </div>
+
+
+    ////information  section
+     <div
+      className="flex items-start justify-center bg-white h-[100%] rounded-2xl w-full">
+      <TextRevealCard text="Feeling lost in your learning journey?" revealText="We’ll help you navigate, Let us guide you!">
+        {/* <TextRevealCardTitle> */}
+          {/* <p className="text-[2rem]" style={{fontFamily:'"Edu AU VIC WA NT Guides",system-ui'}}>{`More than commands, more than rules — we teach you to code, not just use the tools!`}</p> */}
+        {/* </TextRevealCardTitle> */}
+        {/* <TextRevealCardDescription>
+        </TextRevealCardDescription> */}
+      </TextRevealCard>      
+    </div>
+    <DetailInformation/>
+
+
+    In the world of development, Understanding code is crucial copying without learning harms growth.  
+            Grasping logic enables you to build features, adapt, and troubleshoot effectively. 
+            A strong foundation allows you to confidently create, explain, and innovate. 
+            Our platform ensures you <strong>never say:</strong>  '<span className="text-[#3E3E3E] font-bold text-[1.5rem]" style={{fontFamily:'"Caveat", system-ui'}}>It worked last night!</span> '.<br/>
+            Instead, you'll confidently <strong>declare:</strong> '<span className="text-[#3E3E3E] font-bold text-[1.5rem]" style={{fontFamily:'"Caveat", system-ui'}}>I know exactly what my code does!</span> '
+
+
+
+
+            ///// Staff 
+            <div className="h-[100vh] py-24 sm:py-32">
+                <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+                    <div className="max-w-2xl">                       
+                        <h2 style={{
+                            fontFamily: "'Bebas Neue', sans-serif",
+                            fontWeight: 'bold',
+                            textShadow: '2px 2px 4px rgba(0, 0, 0, 1)',
+                        }}
+                            className="text-3xl mt-5 font-bold tracking-tight text-[#3B81F6] sm:text-4xl">
+                            A group committed to bringing out the best in every individual.
+                        </h2>
+                        {/* <p style={{ fontFamily: '"PT Sans Narrow", sans-serif' }} className="mt-7 text-lg leading-8 ">
+                            Our team is a diverse ensemble of innovators, creators, and strategists who share a common passion for excellence. Each of us brings a unique set of skills and perspectives to the table, enabling us to approach challenges with creativity and deliver results that go beyond expectations. We believe in collaboration, growth, and a relentless pursuit of success—together, we’re more than just a team; we’re a driving force committed to turning visions into reality.
+                        </p> */}
+                    </div>
+
+                    <ul role="list" className="h-[60vh] grid overflow-y-scroll gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+                        {people.map((person) => (
+                            <li className="h-[15rem] card" key={person.name}>
+                                <div className="left">
+                                    <img className="profile_img" alt={person.name} src={person.imageUrl} />
+                                </div>
+                                <div className="right">
+                                    <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontWeight: 'bold', textShadow: '2px 2px 4px rgba(0, 0, 0, 1)', }} className="text-[white] text-[2rem] font-bold name">{person.name}</h2>
+                                    <p className="text-[#364D96] card-title">{person.role}</p>
+                                    <p className="location">{person.location}</p>
+                                    <div className="interests">
+                                        <p className="interests_title">Teaches: </p>
+                                        {person.interests.map((interest, index) => (
+                                            <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontWeight: 'bold', textShadow: '2px 2px 4px rgba(0, 0, 0, 1)' }} className="interests_item text-[white]" key={index}>{interest}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>

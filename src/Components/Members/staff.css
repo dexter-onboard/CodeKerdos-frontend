@@ -1,0 +1,64 @@
+/* Vision card css */
+
+
+
+.vision-main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	text-align: center;
+	background-color: #10172A;
+	margin: 0;
+	padding: 20px; /* Added padding to prevent content from touching edges */
+  }
+  
+  .vision-main-container h1 {
+	font-size: 3em;
+	margin-bottom: 5rem;
+	color: #3A80F6;
+	font-weight: bold;
+  }
+  
+  .vision-card {
+	display: flex;
+	max-width: 90%;
+	max-height: 80vh;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+  }
+  
+  .vision-card img {
+	width: 30%;
+	object-fit: cover;
+	height: auto;
+	border: 1.5rem solid #3A80F6;
+  }
+  
+  .vision-card-content {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow-y: auto;
+	text-align: left;
+  }
+  
+  .vision-card-content h2 {
+	margin: 0;
+	font-size: 1.5em;
+	color: #333;
+  }
+  
+  .vision-card-content p {
+	margin-top: 10px;
+	color: #666;
+	font-size: 1em;
+	line-height: 1.5;
+  }
+  
+  
