@@ -1,19 +1,27 @@
-import React from 'react';
-import './Courses.css'; // Assuming the CSS file is named ProductCard.css
+import React from "react";
+import "./Courses.css"; // Assuming the CSS file is named ProductCard.css
 import Ripple from "../ui/ripple";
-
+import {
+  mernLaunchLink,
+  mernLink,
+  mernSpringLaunchLink,
+  springLaunchLink,
+} from "./courseDetailsPdfLinks";
 
 export default function CurrentCourses() {
+  const openCourseDetailsPdf = (link) => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    } else {
+      console.error("PDF link is not provided.");
+    }
+  };
+
   return (
     <>
-      <div       
-        className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden md:shadow-xl">
-        <h1
-          style={{
-            fontWeight: 'bold', // Set font weight to bold
-          }}
-          className='z-10 text-center text-[5rem]'>Our Courses</h1>
-        <div className="z-10 flex flex-wrap justify-between">
+      <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden md:shadow-xl">
+        <h1 className="responsive-product-heading">Our Courses</h1>
+        <div className="z-10 flex flex-wrap justify-between md:justify-center">
           <div className="product-card">
             <div className="product-card__image">
               <img
@@ -22,16 +30,25 @@ export default function CurrentCourses() {
               />
             </div>
             <div className="product-card__info">
-              <h2 className="product-card__title">MERN</h2>
-              <p className="product-card__description">
-                MongoDB ExpressJS ReactJS NodeJS
-              </p>
+              <div className="flex flex-col gap-3 items-start">
+                <h2 className="product-card__title">MERN</h2>
+                <p className="product-card__description">
+                  MongoDB ExpressJS ReactJS NodeJS
+                </p>{" "}
+                <button
+                  onClick={() => openCourseDetailsPdf(mernLink)}
+                  className="details-btn"
+                >
+                  Course Details
+                </button>
+              </div>
               <div className="product-card__price-row">
-                <span className="product-card__price">$149.99</span>
+                <span className="product-card__price">₹40,000</span>
                 <button className="product-card__btn">Buy now!</button>
               </div>
             </div>
           </div>
+
           <div className="product-card">
             <div className="product-card__image">
               <img
@@ -40,16 +57,30 @@ export default function CurrentCourses() {
               />
             </div>
             <div className="product-card__info">
-              <h2 className="product-card__title">FullStack Launchpad(Node.js & Spring Boot)</h2>
-              <p className="product-card__description">
-                Java, DSA, Frontend, Backend, ReactJS
-              </p>
+              <div className="flex flex-col gap-3 items-start">
+                <h2 className="product-card__title">
+                  FullStack Launchpad(Node.js & Spring Boot)
+                </h2>
+
+                <p className="product-card__description">
+                  Java, DSA, Frontend, Backend, ReactJS
+                </p>
+
+                <button
+                  onClick={() => openCourseDetailsPdf(mernSpringLaunchLink)}
+                  className="details-btn"
+                >
+                  Course Details
+                </button>
+              </div>
+
               <div className="product-card__price-row">
-                <span className="product-card__price">$149.99</span>
+                <span className="product-card__price">₹70,000</span>
                 <button className="product-card__btn">Buy now!</button>
               </div>
             </div>
           </div>
+
           <div className="product-card">
             <div className="product-card__image">
               <img
@@ -58,16 +89,27 @@ export default function CurrentCourses() {
               />
             </div>
             <div className="product-card__info">
-              <h2 className="product-card__title">FullStack Launchpad(Spring Boot)</h2>
-              <p className="product-card__description">
-                Java, DSA, Frontend, springboot, ReactJS
-              </p>
+              <div className="flex flex-col gap-3 items-start">
+                <h2 className="product-card__title">
+                  FullStack Launchpad(Spring Boot)
+                </h2>
+                <p className="product-card__description">
+                  Java, DSA, Frontend, springboot, ReactJS
+                </p>
+                <button
+                  onClick={() => openCourseDetailsPdf(springLaunchLink)}
+                  className="details-btn"
+                >
+                  Course Details
+                </button>
+              </div>
               <div className="product-card__price-row">
-                <span className="product-card__price">$149.99</span>
+                <span className="product-card__price">₹60,000</span>
                 <button className="product-card__btn">Buy now!</button>
               </div>
             </div>
           </div>
+
           <div className="product-card">
             <div className="product-card__image">
               <img
@@ -76,12 +118,23 @@ export default function CurrentCourses() {
               />
             </div>
             <div className="product-card__info">
-              <h2 className="product-card__title">FullStack Launchpad(Node.js)</h2>
-              <p className="product-card__description">
-                Java, DSA, Frontend, Nodejs, ReactJS
-              </p>
+              <div className="flex flex-col gap-3 items-start">
+                <h2 className="product-card__title">
+                  FullStack Launchpad(Node.js)
+                </h2>
+
+                <p className="product-card__description">
+                  Java, DSA, Frontend, Nodejs, ReactJS
+                </p>
+                <button
+                  onClick={() => openCourseDetailsPdf(mernLaunchLink)}
+                  className="details-btn"
+                >
+                  Course Details
+                </button>
+              </div>
               <div className="product-card__price-row">
-                <span className="product-card__price">$149.99</span>
+                <span className="product-card__price">₹60,000</span>
                 <button className="product-card__btn">Buy now!</button>
               </div>
             </div>
@@ -91,5 +144,4 @@ export default function CurrentCourses() {
       </div>
     </>
   );
-};
-
+}

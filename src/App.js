@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./App.css";
 import Main from "./Components/MainPage/Main";
 import Slogan from "./Components/About/Slogan";
@@ -11,6 +11,7 @@ import SoonCourses from "./Components/Courses/Soon-Courses";
 import Staff from "./Components/Members/Staff";
 import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
+import WhatsAppButton from "./Components/WhatsAppButton/WhatsAppButton";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Staff />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

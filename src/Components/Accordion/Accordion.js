@@ -1,24 +1,13 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import "./Accordion.css";
 import { IconFileTypePdf } from "@tabler/icons-react";
-import {
-  RadioButtonUnchecked,
-  CheckCircleRounded,
-  StarBorder,
-  Star,
-  ArrowCircleDown,
-  ArrowDropDownCircle,
-  ExpandCircleDown,
-  CheckCircleTwoTone,
-} from "@mui/icons-material";
-import CustomizedProgressBars, { LinearProgressBar } from "../ProgressBar";
-import { ArrowDownIcon } from "lucide-react";
+import { ExpandCircleDown, CheckCircleTwoTone } from "@mui/icons-material";
+import { v4 as uuidv4 } from "uuid";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -57,98 +46,83 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function CustomizedAccordions({ data }) {
+export default function CustomizedAccordions({ studentCourses }) {
   const [expanded, setExpanded] = React.useState("");
   const [isCompleted, setIsCompleted] = React.useState(true);
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  const handleOpenCourseStructurePdf = (link) => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    } else {
+      console.error("PDF link is not provided.");
+    }
+  };
+
   return (
     <div>
-      {data.map((course) => (
-        <Accordion
-          key={course.id} // Ensure each accordion has a unique key
-          expanded={expanded === course.id} // Check if the current accordion is expanded
-          onChange={handleChange(course.id)} // Trigger state change when clicked
-          className="accordionBody mb-3"
-        >
-          <AccordionSummary
-            aria-controls={`panel-${course.id}-content`} // Dynamic aria-controls
-            id={`panel-${course.id}-header`} // Dynamic id
-            className="flex gap-2 items-center"
+      {studentCourses &&
+        studentCourses.length > 0 &&
+        studentCourses?.map((course) => (
+          <Accordion
+            key={course._id}
+            expanded={expanded === course._id}
+            onChange={handleChange(course._id)}
+            className="accordionBody mb-3"
           >
-            <Typography sx={{ fontSize: "24px" }}>{course.name}</Typography>{" "}
-            {/* Display course name dynamically */}
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-            <div>
-              <ul className="flex flex-col gap-3 ps-3">
-                <li className="bg-teal-50 p-3 text-md flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <CheckCircleTwoTone
-                      className={isCompleted ? "green-icon" : "grey-icon"}
-                    />
-
-                    <Typography>Data Structures and Algorithms </Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CustomizedProgressBars sx={{ width: "100px" }} />
-                    <StarBorder />
-                    <IconFileTypePdf />
-                  </div>
-                </li>
-                <li className="bg-teal-50 p-3 text-md flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <CheckCircleTwoTone
-                      className={isCompleted ? "green-icon" : "grey-icon"}
-                    />
-                    <Typography>Frontend Web Developement </Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CustomizedProgressBars sx={{ width: "100px" }} />
-                    <StarBorder />
-                    <IconFileTypePdf />
-                  </div>
-                </li>
-                <li className="bg-teal-50 p-3 text-md flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <CheckCircleTwoTone
-                      className={isCompleted ? "green-icon" : "grey-icon"}
-                    />
-                    <Typography>Backend Development in Node Js</Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CustomizedProgressBars sx={{ width: "100px" }} />
-                    <StarBorder />
-                    <IconFileTypePdf />
-                  </div>
-                </li>
-                <li className="bg-teal-50 p-3 text-md flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <CheckCircleTwoTone
-                      className={isCompleted ? "green-icon" : "grey-icon"}
-                    />
-                    <Typography>Deep Dive in ReactJs </Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CustomizedProgressBars sx={{ width: "100px" }} />
-                    <StarBorder />
-                    <IconFileTypePdf />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+            <AccordionSummary
+              aria-controls={`panel-${course._id}-content`}
+              id={`panel-${course._id}-header`}
+              className="flex gap-2 items-center"
+            >
+              <Typography sx={{ fontSize: "24px" }}>{course.title}</Typography>{" "}
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget.
+              </Typography>
+              <div className="my-2 ">
+                <h6 className="font-bold italic">
+                  Have a look on our course structure
+                </h6>
+              </div>
+              <div>
+                <ul className="flex flex-col gap-3 ps-3">
+                  {course?.documents?.map((item) => (
+                    <li
+                      key={uuidv4()}
+                      className="bg-teal-50 p-3 text-md flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-2">
+                        <CheckCircleTwoTone
+                          className={isCompleted ? "green-icon" : "grey-icon"}
+                        />
+                        <Typography>{item.title}</Typography>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {/* <CustomizedProgressBars sx={{ width: "100px" }} /> */}
+                        {/* <StarBorder /> */}
+                        <button
+                          onClick={() =>
+                            handleOpenCourseStructurePdf(item.link)
+                          }
+                        >
+                          <IconFileTypePdf />
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+        ))}
     </div>
   );
 }

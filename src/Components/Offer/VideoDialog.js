@@ -6,7 +6,7 @@ export default function VideoDialog() {
   const videoSrc = `https://www.youtube.com/embed/${videoId}`; // Correct Embed URL
 
   return (
-    <div className="relative">
+    <div className="relative video-container">
       <HeroVideoDialog
         className="dark:hidden block"
         animationStyle="from-center"

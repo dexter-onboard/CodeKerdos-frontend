@@ -1,64 +1,195 @@
 /* Vision card css */
 
-
-
 .vision-main-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-	text-align: center;
-	background-color: #10172A;
-	margin: 0;
-	padding: 20px; /* Added padding to prevent content from touching edges */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #10172a;
+  margin: 0;
+  padding: 20px; /* Added padding to prevent content from touching edges */
+}
+
+@media (max-width: 1024px) {
+  .vision-main-container {
+    height: 80vh;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .vision-main-container {
+    height: 100vh;
+  }
+}
+
+.vision-main-container h1 {
+  font-size: 3em;
+  margin-bottom: 5rem;
+  color: #3a80f6;
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
   .vision-main-container h1 {
-	font-size: 3em;
-	margin-bottom: 5rem;
-	color: #3A80F6;
-	font-weight: bold;
+    font-size: 3rem;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .vision-main-container h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* .vision-card {
+  display: flex;
+  max-width: 90%;
+  max-height: 80vh;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.vision-card img {
+  width: 30%;
+  object-fit: cover;
+  height: auto;
+  border: 1.5rem solid #3a80f6;
+}
+
+.vision-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.vision-card-content h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.vision-card-content p {
+  margin-top: 10px;
+  color: #666;
+  font-size: 1em;
+  line-height: 1.5;
+} */
+
+.vision-card {
+  display: flex;
+  max-width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.vision-card img {
+  width: 30%;
+  object-fit: cover;
+  height: auto;
+  /* border: 1.5rem solid #3a80f6; */
+}
+
+.vision-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.vision-card-content h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.vision-card-content p {
+  margin-top: 10px;
+  color: #666;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
   .vision-card {
-	display: flex;
-	max-width: 90%;
-	max-height: 80vh;
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	background-color: #fff;
+    flex-direction: column;
+    /* gap: 20px; */
+    max-height: 600px;
   }
-  
+
   .vision-card img {
-	width: 30%;
-	object-fit: cover;
-	height: auto;
-	border: 1.5rem solid #3A80F6;
+    width: 60%;
+    max-height: 200px;
+    margin: 0 auto;
   }
-  
+
   .vision-card-content {
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	overflow-y: auto;
-	text-align: left;
+    padding: 10px;
   }
-  
+
   .vision-card-content h2 {
-	margin: 0;
-	font-size: 1.5em;
-	color: #333;
+    font-size: 1.3em;
   }
-  
+
   .vision-card-content p {
-	margin-top: 10px;
-	color: #666;
-	font-size: 1em;
-	line-height: 1.5;
+    font-size: 0.95em;
   }
-  
-  
+}
+
+@media (max-width: 480px) {
+  .vision-card {
+    flex-direction: column;
+    max-height: 600px;
+  }
+  .vision-card img {
+    /* width: 100%;
+    max-height: 300px; */
+    display: none;
+  }
+
+  .vision-card-content {
+    padding: 5px;
+  }
+
+  .vision-card-content h2 {
+    font-size: 1.3em;
+  }
+
+  .vision-card-content p {
+    font-size: 11px;
+  }
+}
+
+img {
+  height: 325px;
+}
+
+.responsive-heading {
+  font-size: 4rem;
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .responsive-heading {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-heading {
+    font-size: 2.5rem;
+  }
+}

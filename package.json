@@ -21,7 +21,9 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.5.0",
     "animejs": "^3.2.2",
+    "axios": "^1.7.7",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "framer-motion": "^11.5.4",
     "gsap": "^3.12.5",
     "headlessui": "^0.0.0",
@@ -37,8 +39,10 @@
     "react-tsparticles": "^2.12.2",
     "tailwind-merge": "^2.5.2",
     "tsparticles": "^3.5.0",
+    "uuid": "^11.0.3",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "http://23.21.13.159:3001",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

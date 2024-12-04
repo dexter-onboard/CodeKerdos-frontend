@@ -1,33 +1,63 @@
-import React, { useContext } from "react";
-import "./Navbar.css"; // Import the CSS file
-// import logoImg from "../images/logo-no-background.png";
+import React, { useContext, useEffect, useState } from "react";
+import "./Navbar.css";
 import Login from "../Login/Login";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Body/Body";
-// import UserAvatar from "../UserAvatar";
 import { IconButton, Tooltip } from "@mui/material";
 import { ArrowOutwardRounded } from "@mui/icons-material";
+import UserAvatar from "../UserAvatar";
+import axios from "axios";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [isUser, setIsUser] = useContext(UserContext);
-  const toggleShowLogin = () => {
+  const [user, setUser] = useState({
+    loggedIn: false,
+    token: "",
+    studentInfo: {},
+  });
+
+  const handleLogIn = () => {
     navigate("/login");
   };
-  const toggleShowLogout = () => {
-    setIsUser(false);
-    localStorage.setItem("user", null);
-    navigate("/login");
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    setUser({ loggedIn: false, token: "" });
+    navigate("/");
   };
 
   const handleClassroom = () => {
-    if (localStorage.getItem("user") !== "null") navigate("/classroom");
+    if (user.loggedIn === true) navigate("/classroom");
     else navigate("/login");
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const studentId = localStorage.getItem("studentId");
+    if (token) {
+      setUser({ loggedIn: true, token });
+
+      const url = `${process.env.REACT_APP_BACKEND_API_URL}/auth/${studentId}`;
+      axios
+        .get(url)
+        .then((response) => {
+          setUser({ loggedIn: true, token, studentInfo: response.data });
+        })
+        .catch((error) => {
+          console.error("error fetching student details ", error);
+        });
+    }
+  }, []);
+
+  // console.log(user);
+
   return (
     <nav className="navbar relative overflow-hidden flex flex-col">
       <div className="flex w-full justify-between items-center">
-        <div className="navbar-logo relative z-10">
+        <div
+          className="navbar-logo relative z-10"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer" }}
+        >
           {" "}
           {/* Ensure the logo is on top */}
           {/* <img className="h-[70px] w-[70px] mr-2" src={logoImg} alt="logo" /> */}
@@ -40,27 +70,35 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex gap-1 items-center">
-          <Tooltip title={localStorage.getItem("user")} placement="bottom">
-            <IconButton>
-              {/* <UserAvatar /> */}
-            </IconButton>
-          </Tooltip>
-          <button
-            onClick={handleClassroom}
-            className="bg-blue-800 hover:bg-blue-500 text-white h-[32px] mx-2 cursor-pointer font-semibold hover:text-white py-2 px-2 border border-transparent hover:border-[#15C0FD] rounded flex items-center gap-1"
-          >
-            <span>Classroom</span>
-            <ArrowOutwardRounded />
-          </button>
+          {user.loggedIn && (
+            <Tooltip title="" placement="bottom">
+              {/* <IconButton>
+                <UserAvatar />
+              </IconButton> */}
+              <div className="avatar-container">
+                <i className="fas fa-user-circle fa-2x avatar-icon"></i>
+                <span className="greeting-text">
+                  Hi {user?.studentInfo?.name}
+                </span>
+              </div>
+            </Tooltip>
+          )}
+
+          {user.loggedIn && (
+            <button
+              onClick={handleClassroom}
+              className="bg-blue-800 hover:bg-blue-500 text-white h-[32px] mx-2 cursor-pointer font-semibold hover:text-white py-2 px-2 border border-transparent hover:border-[#15C0FD] rounded flex items-center gap-1"
+            >
+              <span>Classroom</span>
+              <ArrowOutwardRounded />
+            </button>
+          )}
+
           <button
             className=" bg-blue-800 hover:bg-blue-500 text-white h-[32px] me-4 cursor-pointer font-semibold hover:text-white py-2 px-2 border border-[#15C0FD] hover:border-[#15C0FD] rounded flex items-center"
-            onClick={
-              localStorage.getItem("user") !== "null"
-                ? toggleShowLogout
-                : toggleShowLogin
-            }
+            onClick={user.loggedIn === true ? handleLogOut : handleLogIn}
           >
-            {localStorage.getItem("user") !== "null" ? "Log Out" : "Log In"}
+            {user.loggedIn === true ? "Log Out" : "Log In"}
           </button>
         </div>
       </div>

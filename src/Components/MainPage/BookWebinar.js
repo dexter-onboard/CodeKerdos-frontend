@@ -1,36 +1,76 @@
-import React from 'react';
-import './Main.css'; // Assuming you save the CSS in App.css
+import React, { useState } from "react";
+import "./Main.css";
+import dayjs from "dayjs";
 
 const WebinarBookingForm = () => {
-    return (
-        <div className="cardbook">
-            <h2>Book a Free Webinar</h2>
-            <form 
-                action="YOUR_GOOGLE_FORM_LINK" 
-                method="POST" 
-                target="_blank" 
-                className="form"
-            >
-                <input 
-                    type="text" 
-                    name="entry.123456789" 
-                    placeholder="Name" 
-                    required 
-                />
-                <input 
-                    type="email" 
-                    name="entry.987654321" 
-                    placeholder="Email" 
-                    required 
-                />
-                <input 
-                    type="tel" 
-                    name="entry.1122334455" 
-                    placeholder="Phone Number" 
-                    required 
-                />
-                
-                <label htmlFor="webinar-date">Select Webinar Date:</label>
+  const [formData, setFormData] = useState({ Name: "", Email: "", Phone: "" });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const saveFreeWebinarBookingData = (e) => {
+    e.preventDefault();
+
+    setIsLoading(true);
+
+    const url =
+      "https://script.google.com/macros/s/AKfycbx4nCW6DzYfOke9OgFX8yx1FNnbI-0oD5hXVmJSUuJVMUkxzBOR7iL99Ep52m4hw3oP/exec";
+    fetch(url, {
+      //   mode: "no-cors",
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `TimeStamp=${dayjs().format("DD/MM/YYYY HH:mm:ss")}&Name=${
+        formData.Name
+      }&Email=${formData.Email}&Phone=${formData.Phone}`,
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        setFormData({ Name: "", Email: "", Phone: "" });
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 6000);
+      })
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  return (
+    <div className="cardbook">
+      <h2>Book a Free Webinar</h2>
+
+      {!isSubmitted ? (
+        <form className="form" onSubmit={saveFreeWebinarBookingData}>
+          <input
+            type="text"
+            name="Name"
+            placeholder="Name"
+            required
+            value={formData.Name}
+            onChange={handleInputChange}
+          />
+          <input
+            type="email"
+            name="Email"
+            placeholder="Email"
+            required
+            value={formData.Email}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            name="Phone"
+            placeholder="Phone"
+            required
+            value={formData.Phone}
+            onChange={handleInputChange}
+          />
+
+          {/* <label htmlFor="webinar-date">Select Webinar Date:</label>
                 <select 
                     id="webinar-date" 
                     name="entry.3344556677" 
@@ -41,12 +81,19 @@ const WebinarBookingForm = () => {
                     <option value="Date1">Date 1</option>
                     <option value="Date2">Date 2</option>
                     <option value="Date3">Date 3</option>
-                </select>
+                </select> */}
 
-                <button type="submit" className="login_btn">Book Now</button>
-            </form>
-        </div>
-    );
+          <button type="submit" className="login_btn" disabled={isLoading}>
+            {isLoading ? "Booking..." : "Book Now"}
+          </button>
+        </form>
+      ) : (
+        <p style={{ textAlign: "center", fontSize: "18px", color: "green" }}>
+          Booking done! Thank you. Details will be shared to you shortly.
+        </p>
+      )}
+    </div>
+  );
 };
 
 export default WebinarBookingForm;

@@ -6,12 +6,11 @@ import CardStackDemo from "./MainContent";
 import WebinarBookingForm from "./BookWebinar";
 import "./Main.css";
 export default function BackgroundBoxesDemo() {
+  console.log(window.innerWidth);
+
   return (
     <>
-      <div
-        className=" bg-[#10172A] min-h-screen min-w-screen relative overflow-hidden bg-slate-900 flex flex-col justify-center "
-      >
-
+      <div className=" bg-[#10172A] min-h-screen min-w-screen relative overflow-hidden bg-slate-900 flex flex-col justify-center ">
         <Navbar />
         <p className="t-cedarville-cursive ml-4 text-white  relative z-20">
           &lt;html&gt;
@@ -26,7 +25,7 @@ export default function BackgroundBoxesDemo() {
           {/* <AnimatedBall /> */}
           <HeadingOfPage />
         </h1>
-        <p className="text-white t-cedarville-cursive ml-[5rem]  relative z-20">
+        <p className="text-white t-cedarville-cursive ml-[5rem] mt-[4rem]  relative z-20">
           &lt;/title&gt;
         </p>
         <p className="text-white t-cedarville-cursive ml-[3rem]  relative z-20">
@@ -36,12 +35,14 @@ export default function BackgroundBoxesDemo() {
           &lt;body&gt;
         </p>
 
-        <p className="flex text-center mt- text-neutral-300 relative z-20">
-          {/* <img src="https://media3giphy.com/media/VJ65NK5synjTaL4D0I/giphy.gif" alt="gif"></img> */}
-          {/* <img src="https://present.readthedocs.io/en/latest/_images/welcome-to-coding.gif"></img> */}
-          <CardStackDemo />
-          <WebinarBookingForm />
-        </p>
+        <div className="flex md:justify-evenly mt-[2rem] mb-[2rem] md:gap-4 lg:ml-20">
+          <div className="hidden md:block md:ml-8">
+            <CardStackDemo />
+          </div>
+          <div className="ml-14 md:ml-0">
+            <WebinarBookingForm />
+          </div>
+        </div>
         <p className="text-white t-cedarville-cursive ml-[5rem]  relative z-20">
           &lt;/body&gt;
         </p>

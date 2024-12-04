@@ -3,6 +3,7 @@ import Login from "../Login/Login";
 import App from "src/App";
 import Classroom from "../Classroom/Classroom";
 import { createContext, useState } from "react";
+import Signup from "../SignUp/Signup";
 export const UserContext = createContext();
 
 const Body = () => {
@@ -11,6 +12,10 @@ const Body = () => {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/signup",
+      element: <Signup />,
     },
     {
       path: "/",

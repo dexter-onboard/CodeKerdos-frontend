@@ -5,135 +5,117 @@ import { GoogleLogin } from "@react-oauth/google";
 import { checkValidation } from "src/utils/validation";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Body/Body";
+import axios from "axios";
 
 function Login() {
   const [isSignIn, setIsSignIn] = useState(true);
-  const name = useRef(null);
-  const email = useRef(null);
-  const password = useRef(null);
-  const confirmPassword = useRef(null);
-  const phone = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const [isUser, setIsUser] = useContext(UserContext);
 
-  const toggleSignIn = () => {
-    setIsSignIn(!isSignIn);
-  };
+  const [username, setusername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleLogin = () => {
-    if (email?.current?.value.length === 0) return;
-    const message = checkValidation(
-      email?.current?.value,
-      password?.current?.value
-    );
-    setErrorMessage(message);
-    if (message) return;
-    else {
-      setIsUser(true);
-      localStorage.setItem("user", email?.current?.value);
-      navigate("/");
-    }
-  };
+  // const handleLogin = () => {
+  //   if (username?.current?.value.length === 0) return;
+  //   const message = checkValidation(
+  //     username?.current?.value,
+  //     password?.current?.value
+  //   );
+  //   setErrorMessage(message);
+  //   if (message) return;
+  //   else {
+  //     setIsUser(true);
+  //     localStorage.setItem("user", username?.current?.value);
+  //     navigate("/");
+  //   }
+  // };
 
-  const handleSignUp = () => {
-    if (email?.current?.value.length === 0) return;
-    if (password?.current?.value !== confirmPassword?.current?.value) {
-      setErrorMessage("Passwords dont match");
-      return;
-    }
-    const message = checkValidation(
-      email?.current?.value,
-      password?.current?.value
-    );
-    setErrorMessage(message);
-    if (message) return;
-    else {
-      setIsUser(true);
-      localStorage.setItem("user", email?.current?.value);
-      navigate("/");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const url = `${process.env.REACT_APP_BACKEND_API_URL}/auth/login`;
+      console.log(url);
+
+      const response = await axios.post(url, {
+        username,
+        password,
+      });
+
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("studentId", response.data.user._id);
+      navigate("/classroom");
+    } catch (err) {
+      console.error("Login error:", err);
+      setErrorMessage("Failed to sign in. Please check your credentials.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <BackgroundBeamsWithCollision>
       <div className="loginForm bg-slate-900 w-1/3 py-10 rounded-md min-w-[500px]">
+        <button
+          onClick={() => navigate("/")}
+          className="absolute top-4 left-4 p-2 rounded-full hover:bg-slate-600 text-white"
+        >
+          <i class="fas fa-arrow-left"></i>
+        </button>
+
         <form
           className="flex flex-col items-center gap-4 p-10 "
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
         >
-          {!isSignIn && (
-            <input
-              className="p-2 rounded-lg w-[300px]"
-              type="text"
-              placeholder="Enter Name"
-              ref={name}
-              required
-            />
-          )}
-          {!isSignIn && (
-            <input
-              className="p-2 rounded-lg w-[300px]"
-              type="tel"
-              placeholder="Enter Mobile Number"
-              ref={phone}
-              required
-            />
-          )}
           <input
             className="p-2 rounded-lg w-[300px]"
-            type="email"
-            placeholder="Enter Email"
-            ref={email}
+            type="username"
+            placeholder="Enter username"
+            onChange={(e) => setusername(e.target.value)}
             required
           />
           <input
             className="p-2 rounded-lg w-[300px]"
             type="password"
             placeholder="Enter your password"
-            ref={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
-          {!isSignIn && (
-            <input
-              className="p-2 rounded-lg w-[300px]"
-              type="password"
-              placeholder="Enter confirm password"
-              ref={confirmPassword}
-              required
-            />
-          )}
+
           <p className="text-red-500 text-sm">{errorMessage}</p>
           <button
-            className="p-2 w-[180px] rounded-lg bg-[#3B81F6] text-white"
-            onClick={isSignIn ? handleLogin : handleSignUp}
+            className="p-2 w-[180px] rounded-lg bg-[#2F5791] text-white"
+            // onClick={handleLogin}
+            type="submit"
           >
-            {isSignIn ? "Login" : "Sign Up"}
+            Login
           </button>
           <p className="text-gray-700">
             ------------------- OR -------------------
           </p>
-          <GoogleLogin
+          {/* <GoogleLogin
             text={isSignIn ? "signin_with" : "signup_with"}
             onSuccess={(credentialResponse) => {
               console.log(credentialResponse);
               setIsUser(true);
-              localStorage.setItem("user", email?.current?.value);
+              localStorage.setItem("user", username?.current?.value);
               navigate("/");
             }}
             onError={() => {
               console.log("Login Failed");
             }}
-          />
+          /> */}
 
-          <p
-            onClick={toggleSignIn}
-            className="cursor-pointer text-xs text-gray-400"
-          >
+          <a href="/signup" className="cursor-pointer text-xs text-gray-400">
             {isSignIn
               ? "New to CodeKerdos?? Sign Up Now"
               : "Already have an account...Sign In instead"}
-          </p>
+          </a>
         </form>
       </div>
     </BackgroundBeamsWithCollision>
