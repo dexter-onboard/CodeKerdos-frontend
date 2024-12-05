@@ -9,18 +9,24 @@ export default function BackgroundBeamsWithCollisionDemo() {
 
   const openPdfLinks = (link) => {
     if (link) {
-      window.open(link, "_blank", "noopener,noreferrer");
+      window.open("", "_blank", "noopener,noreferrer");
     } else {
       console.error("PDF link is not provided.");
     }
   };
 
   const openPrivacyPolicy = () => {
-    navigate("/privacy-policy");
+    window.open(
+      "https://codekerdos.s3.us-east-1.amazonaws.com/CodeKerdos-Privacy+Policy.pdf",
+      "_blank"
+    );
   };
 
-  const openTermsOfUse = () => {
-    navigate("/terms-of-use");
+  const openTermsOfUse = (link) => {
+    window.open(
+      "https://codekerdos.s3.us-east-1.amazonaws.com/CodeKerdos-Terms+of+Service.pdf",
+      "_blank"
+    );
   };
 
   return (
