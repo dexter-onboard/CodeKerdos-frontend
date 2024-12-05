@@ -74,7 +74,7 @@ function TermsOfUse() {
         </button>
       </div>
       <Document
-        file="http://23.21.13.159:3001/policy/terms-of-use"
+        file="https://codekerdos.s3.us-east-1.amazonaws.com/CodeKerdos-Terms+of+Service.pdf"
         onLoadSuccess={onDocumentLoadSuccess}
       >
         <Page pageNumber={pageNumber} scale={scale} />
