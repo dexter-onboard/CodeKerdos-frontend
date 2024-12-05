@@ -1,15 +1,26 @@
 import React from "react";
 import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision";
 import { privacyPolicyLink, termsOfUseLink } from "./pdfLinks";
+import { useNavigate } from "react-router-dom";
 // import logoImg from "../images/logo-no-background.png";
 
 export default function BackgroundBeamsWithCollisionDemo() {
+  const navigate = useNavigate();
+
   const openPdfLinks = (link) => {
     if (link) {
       window.open(link, "_blank", "noopener,noreferrer");
     } else {
       console.error("PDF link is not provided.");
     }
+  };
+
+  const openPrivacyPolicy = () => {
+    navigate("/privacy-policy");
+  };
+
+  const openTermsOfUse = () => {
+    navigate("/terms-of-use");
   };
 
   return (
@@ -46,16 +57,10 @@ export default function BackgroundBeamsWithCollisionDemo() {
       </h2>
 
       <div className="flex gap-5 mt-3">
-        <div
-          className="cursor-pointer"
-          onClick={() => openPdfLinks(privacyPolicyLink)}
-        >
+        <div className="cursor-pointer" onClick={() => openPrivacyPolicy()}>
           <h6 className="text-white hover:underline">Privacy policy</h6>
         </div>
-        <div
-          className="cursor-pointer"
-          onClick={() => openPdfLinks(termsOfUseLink)}
-        >
+        <div className="cursor-pointer" onClick={() => openTermsOfUse()}>
           <h6 className="text-white hover:underline">Terms & conditions</h6>
         </div>
       </div>

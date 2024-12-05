@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./input.css";
 import Body from "./Components/Body/Body";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { pdfjs } from "react-pdf";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
