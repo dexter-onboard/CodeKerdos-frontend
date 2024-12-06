@@ -44,7 +44,7 @@ export default function BackgroundBeamsWithCollisionDemo() {
               <i class="fa-solid fa-envelope text-white mt-1"></i>
             </span>
             <span className="ml-2 text-white text-lg">
-              support@codekerdos.com
+              support@codekerdos.in
             </span>
           </span>
         </span>
