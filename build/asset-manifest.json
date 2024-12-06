@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ceaad43d.css",
-    "main.js": "/static/js/main.bf2e0f76.js",
+    "main.css": "/static/css/main.3a50031f.css",
+    "main.js": "/static/js/main.17e3330d.js",
     "static/media/view-3d-school-desk.jpg": "/static/media/view-3d-school-desk.30f89fabac39d19dd679.jpg",
     "static/media/Riya.jpg": "/static/media/Riya.90c68ed238328db60817.jpg",
     "static/media/Shail-Chabra.jpeg": "/static/media/Shail-Chabra.d447e183677c3f3e1ae6.jpeg",
@@ -11,14 +11,17 @@
     "static/media/yogesh_sharma.jpg": "/static/media/yogesh_sharma.8d282c53ad1010830e17.jpg",
     "static/media/Harshit-Gupta.jpg": "/static/media/Harshit-Gupta.97b86149eaa30816384b.jpg",
     "static/media/Sudhendra-singh.jpg": "/static/media/Sudhendra-singh.968db52328a1ea2c332c.jpg",
+    "static/media/ajayJoshi.jpeg": "/static/media/ajayJoshi.e1c2a98343e1d764cbbf.jpeg",
     "static/media/Hitesh-Sharma.jpg": "/static/media/Hitesh-Sharma.10449b59f8e336a66830.jpg",
+    "static/media/Mainak_chakrabortty.jpeg": "/static/media/Mainak_chakrabortty.be6110cc7be4f08d04eb.jpeg",
+    "static/media/Kiran Rawat.jpeg": "/static/media/Kiran Rawat.50cb4eddfcb20fd31eda.jpeg",
     "index.html": "/index.html",
     "static/media/mask.svg": "/static/media/mask.efca3f375ce8a471de2c.svg",
-    "main.ceaad43d.css.map": "/static/css/main.ceaad43d.css.map",
-    "main.bf2e0f76.js.map": "/static/js/main.bf2e0f76.js.map"
+    "main.3a50031f.css.map": "/static/css/main.3a50031f.css.map",
+    "main.17e3330d.js.map": "/static/js/main.17e3330d.js.map"
   },
   "entrypoints": [
-    "static/css/main.ceaad43d.css",
-    "static/js/main.bf2e0f76.js"
+    "static/css/main.3a50031f.css",
+    "static/js/main.17e3330d.js"
   ]
 }

@@ -60,6 +60,7 @@ export default function Slogan() {
                   <a
                     onClick={handleContactClick}
                     // href="/"
+                    style={{ cursor: "pointer" }}
                     className="theme-btn btn-style-one"
                   >
                     Contact Us

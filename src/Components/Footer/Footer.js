@@ -1,15 +1,12 @@
 import React from "react";
 import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision";
 import { privacyPolicyLink, termsOfUseLink } from "./pdfLinks";
-import { useNavigate } from "react-router-dom";
 // import logoImg from "../images/logo-no-background.png";
 
 export default function BackgroundBeamsWithCollisionDemo() {
-  const navigate = useNavigate();
-
   const openPdfLinks = (link) => {
     if (link) {
-      window.open("", "_blank", "noopener,noreferrer");
+      window.open(link, "_blank", "noopener,noreferrer");
     } else {
       console.error("PDF link is not provided.");
     }

@@ -6,6 +6,9 @@ import SahilImg from "../images/Shail-Chabra.jpeg";
 import RiyaImg from "../images/Riya.jpg";
 import HarshitImg from "../images/Harshit-Gupta.jpg";
 import GarimaImg from "../images/garima.jpeg";
+import KiranImg from "../images/Kiran Rawat.jpeg";
+import MainakImg from "../images/Mainak_chakrabortty.jpeg";
+import AjayJoshiImg from "../images/ajayJoshi.jpeg";
 import "./staff.css";
 // import teamBg from "../images/30.jpg";
 import Heading from "./Heading";
@@ -24,29 +27,29 @@ const people = [
   //     interests: ['Business Development', 'Strategic Planning'],
   // },
   {
-    name: "Shivansh Jaitly",
-    role: "SDE-2",
-    imageUrl: ShivanshImg,
-    interests: ["FrontEnd,", " Java,", " DSA,", " SpringBoot"],
+    name: "Kiran Rawat",
+    role: "SDE-4",
+    imageUrl: KiranImg,
+    interests: ["FrontEnd,", " Java,", " DSA,", " MERN"],
   },
 
   {
-    name: "Sudhendra Singh",
-    role: "SDE-2",
-    imageUrl: SudhendraImg,
-    interests: ["MERN,", " AWS,", " SQL,", " devops"],
+    name: "Mainak Chakrabortty",
+    role: "Staff Software Engineer",
+    imageUrl: MainakImg,
+    interests: ["FrontEnd,", " Java,", " DSA,", " MERN"],
   },
   {
     name: "Hitesh Sharma",
     role: "Lead BlockChain Developer",
     imageUrl: HiteshImg,
-    interests: ["BlockChain,", " Backend,", " SQL,", ",Shell Scripting"],
+    interests: ["BlockChain,", " Backend,", " SQL,", "Shell Scripting"],
   },
   {
     name: "Sahil Chhabra",
     role: "SDE-1",
     imageUrl: SahilImg,
-    interests: ["Java,", " DSA,", " MERN,", " AWS,", " Cloudinary"],
+    interests: ["Java,", " DSA,", " MERN,", " AWS,", " SpringBoot"],
   },
   {
     name: "Riya Agarwal",
@@ -66,6 +69,12 @@ const people = [
     role: "Data Engineer",
     imageUrl: HarshitImg,
     interests: ["Data Science,", " Java,", " SQL,", " Tableau,", " Python"],
+  },
+  {
+    name: "Ajay Joshi",
+    role: "SDE-2",
+    imageUrl: AjayJoshiImg,
+    interests: ["Java,", " DSA,", " MERN,", " AWS,", " MERN"],
   },
 
   // More people...
@@ -149,7 +158,7 @@ export default function Staff() {
                   >
                     {person.name}
                   </h5>
-                  <p>{person.role}</p>
+                  <p style={{ fontWeight: "bold" }}>{person.role}</p>
                   <p className="card-text">
                     Teaches:{" "}
                     {person.interests.map((interest, index) => (

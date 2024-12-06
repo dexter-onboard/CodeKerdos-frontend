@@ -39,7 +39,7 @@ export default function BackgroundBoxesDemo() {
           <div className="hidden md:block md:ml-8">
             <CardStackDemo />
           </div>
-          <div className="ml-14 md:ml-0">
+          <div className="ml-7 md:ml-0">
             <WebinarBookingForm />
           </div>
         </div>

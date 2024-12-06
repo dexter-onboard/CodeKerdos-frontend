@@ -12,6 +12,7 @@ import Staff from "./Components/Members/Staff";
 import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
 import WhatsAppButton from "./Components/WhatsAppButton/WhatsAppButton";
+import StillConfused from "./Components/Courses/StillConfused";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Information />
       <Steps />
       <CurrentCourses />
+      {/* <StillConfused /> */}
       <SoonCourses />
       <Staff />
       <Contact />

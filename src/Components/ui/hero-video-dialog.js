@@ -105,11 +105,14 @@ export default function HeroVideoDialog({
               </motion.button>
               <div className="size-full border-2 border-white rounded-2xl overflow-hidden isolate z-[1] relative">
                 <iframe
-                  src={videoSrc}
-                  className="size-full rounded-2xl"
-                  title="Video content"
-                  allowFullScreen
+                  width="900"
+                  height="500"
+                  src="https://www.youtube.com/embed/C6hgFHSMkzY?si=6BceuIAkjOJczgT3"
+                  title="YouTube video player"
+                  frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
                 ></iframe>
               </div>
             </motion.div>

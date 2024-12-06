@@ -27,6 +27,14 @@ const timelineData = [
     },
   },
   {
+    text: "Once you complete mock tests and mind-test assignments, we offer exclusive opportunities for paid internships in both service and product-based companies. These internships provide invaluable exposure, helping you gain industry experience and establish your place in the tech world.",
+    date: "Paid Internship",
+    category: {
+      tag: "CodeKerdos",
+      color: "#003a74",
+    },
+  },
+  {
     text: `Our platform offers a personalized learning experience tailored to your unique needs. Through comprehensive assessments, we help you identify your skills and interests, allowing us to create custom learning plans that align with your goals. You’ll engage with dynamic content that resonates with you, ensuring that your learning is both effective and enjoyable. With a strong foundation in place, you'll be well-equipped on your path to success in coding.`,
     date: "Crafting Your Unique Learning Journey",
     category: {

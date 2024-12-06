@@ -16,6 +16,14 @@ export default function CurrentCourses() {
       console.error("PDF link is not provided.");
     }
   };
+  const handleDragUpwards = () => {
+    let scrollHeight;
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -138,6 +146,18 @@ export default function CurrentCourses() {
                 <button className="product-card__btn">Buy now!</button>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-20 mb-20 z-40">
+          <h3 className="responsive-product-heading">Still Confused ? 🤔</h3>
+          <div className="flex justify-center items-center mt-3">
+            <button
+              className="bg-[#1a4f8f] text-white text-xl py-3 px-6 rounded-md hover:bg-[#003a74] transition duration-300"
+              onClick={handleDragUpwards}
+            >
+              Book a free webinar 🥳
+            </button>
           </div>
         </div>
         <Ripple />
