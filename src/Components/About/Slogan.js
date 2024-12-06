@@ -5,15 +5,35 @@ export default function Slogan() {
   const handleContactClick = () => {
     let scrollHeight;
 
-    if (window.innerWidth < 640) {
+    if (window.innerWidth < 345) {
       // Mobile
-      scrollHeight = 16800;
-    } else if (window.innerWidth < 1024) {
+      scrollHeight = 20600;
+    } else if (window.innerWidth < 391) {
+      // Mobile
+      scrollHeight = 19300;
+    } else if (window.innerWidth < 431) {
+      // Mobile
+      scrollHeight = 18400;
+    } else if (window.innerWidth < 541) {
+      // tablet
+      scrollHeight = 17400;
+    } else if (window.innerWidth < 770) {
+      // tablet
+      scrollHeight = 15400;
+    } else if (window.innerWidth < 825) {
+      // Mobile
+      scrollHeight = 16000;
+    } else if (window.innerWidth < 920) {
       // Tablet
-      scrollHeight = 8000;
-    } else {
+      scrollHeight = 15300;
+    } else if (window.innerWidth < 1025) {
+      // Tablet
+      scrollHeight = 12500;
+    } else if (window.innerWidth < 1445) {
       // laptop
-      scrollHeight = 11100;
+      scrollHeight = 12200;
+    } else {
+      scrollHeight = 11600;
     }
 
     window.scrollTo({
