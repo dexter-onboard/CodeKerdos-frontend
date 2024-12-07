@@ -28,7 +28,7 @@ const timelineData = [
   },
   {
     text: "Once you complete mock tests and mind-test assignments, we offer exclusive opportunities for paid internships in both service and product-based companies. These internships provide invaluable exposure, helping you gain industry experience and establish your place in the tech world.",
-    date: "Paid Internship",
+    date: "Guaranteed Internship or Full refund.",
     category: {
       tag: "CodeKerdos",
       color: "#003a74",
@@ -67,7 +67,7 @@ const TimelineItem = ({ data }) => (
       <span className="tag" style={{ background: data.category.color }}>
         {data.category.tag}
       </span>
-      <time>{data.date}</time>
+      <time style={{ fontWeight: "bold" }}>{data.date}</time>
       <p>{data.text}</p>
       {data.link && (
         <a href={data.link.url} target="_blank" rel="noopener noreferrer">
