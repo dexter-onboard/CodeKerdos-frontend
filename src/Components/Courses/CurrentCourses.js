@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Courses.css"; // Assuming the CSS file is named ProductCard.css
 import Ripple from "../ui/ripple";
 import {
@@ -7,8 +7,34 @@ import {
   mernSpringLaunchLink,
   springLaunchLink,
 } from "./courseDetailsPdfLinks";
+import axios from "axios";
+import payNow from "./PaymentScript";
 
 export default function CurrentCourses() {
+  const [user, setUser] = useState({
+    loggedIn: false,
+    token: "",
+    studentInfo: {},
+  });
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const studentId = localStorage.getItem("studentId");
+    if (token) {
+      setUser({ loggedIn: true, token });
+
+      const url = `${process.env.REACT_APP_BACKEND_API_URL}/auth/${studentId}`;
+      axios
+        .get(url)
+        .then((response) => {
+          setUser({ loggedIn: true, token, studentInfo: response.data });
+        })
+        .catch((error) => {
+          console.error("error fetching student details ", error);
+        });
+    }
+  }, []);
+
   const openCourseDetailsPdf = (link) => {
     if (link) {
       window.open(link, "_blank", "noopener,noreferrer");
@@ -23,6 +49,17 @@ export default function CurrentCourses() {
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  const payNowHandler = (amount, description) => {
+    payNow(
+      amount,
+      "1234",
+      description,
+      user.studentInfo.name,
+      user.studentInfo.username,
+      user.studentInfo.phoneNumber
+    );
   };
 
   return (
@@ -52,7 +89,14 @@ export default function CurrentCourses() {
               </div>
               <div className="product-card__price-row">
                 <span className="product-card__price">₹40,000</span>
-                <button className="product-card__btn">Buy now!</button>
+                <button
+                  className="product-card__btn"
+                  onClick={() =>
+                    payNowHandler(40000, "MongoDB ExpressJS ReactJS NodeJS")
+                  }
+                >
+                  Buy now!
+                </button>
               </div>
             </div>
           </div>
@@ -84,7 +128,17 @@ export default function CurrentCourses() {
 
               <div className="product-card__price-row">
                 <span className="product-card__price">₹70,000</span>
-                <button className="product-card__btn">Buy now!</button>
+                <button
+                  className="product-card__btn"
+                  onClick={() =>
+                    payNowHandler(
+                      70000,
+                      "FullStack Launchpad(Node.js & Spring Boot)"
+                    )
+                  }
+                >
+                  Buy now!
+                </button>
               </div>
             </div>
           </div>
@@ -113,7 +167,14 @@ export default function CurrentCourses() {
               </div>
               <div className="product-card__price-row">
                 <span className="product-card__price">₹60,000</span>
-                <button className="product-card__btn">Buy now!</button>
+                <button
+                  className="product-card__btn"
+                  onClick={() =>
+                    payNowHandler(60000, "FullStack Launchpad(Spring Boot)")
+                  }
+                >
+                  Buy now!
+                </button>
               </div>
             </div>
           </div>
@@ -143,7 +204,14 @@ export default function CurrentCourses() {
               </div>
               <div className="product-card__price-row">
                 <span className="product-card__price">₹60,000</span>
-                <button className="product-card__btn">Buy now!</button>
+                <button
+                  className="product-card__btn"
+                  onClick={() =>
+                    payNowHandler(60000, "FullStack Launchpad(Node.js)")
+                  }
+                >
+                  Buy now!
+                </button>
               </div>
             </div>
           </div>
