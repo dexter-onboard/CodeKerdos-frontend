@@ -8,12 +8,16 @@ async function payNow(amount, id, description, name, email, contact) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      amount,
-      currency: "INR",
-      receipt: "receipt#1",
-      notes: {},
-      partial_payment: true,
-      first_payment_min_amount: 10 * 100,
+      order: {
+        amount,
+        currency: "INR",
+        receipt: "receipt#1",
+        notes: {},
+        partial_payment: true,
+        first_payment_min_amount: 10 * 100,
+      },
+      user_id: id,
+      course_id: description,
     }),
   });
 

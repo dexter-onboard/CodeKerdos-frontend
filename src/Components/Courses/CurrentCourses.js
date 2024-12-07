@@ -52,14 +52,14 @@ export default function CurrentCourses() {
   };
 
   const payNowHandler = (amount, description) => {
-    payNow(
-      amount,
-      "1234",
-      description,
-      user.studentInfo.name,
-      user.studentInfo.username,
-      user.studentInfo.phoneNumber
-    );
+    // payNow(
+    //   amount,
+    //   "1234",
+    //   description,
+    //   user.studentInfo.name,
+    //   user.studentInfo.username,
+    //   user.studentInfo.phoneNumber
+    // );
   };
 
   return (
