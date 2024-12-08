@@ -36,7 +36,7 @@ const Navbar = () => {
     if (token) {
       setUser({ loggedIn: true, token });
 
-      const url = `${process.env.REACT_APP_BACKEND_API_URL}/auth/${studentId}`;
+      const url = `https://codekerdos.in/api/auth/${studentId}`;
       axios
         .get(url)
         .then((response) => {

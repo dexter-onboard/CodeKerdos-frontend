@@ -20,13 +20,17 @@ export default function CurrentCourses() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const studentId = localStorage.getItem("studentId");
+
+    console.log("token", token);
+
     if (token) {
       setUser({ loggedIn: true, token });
 
-      const url = `${process.env.REACT_APP_BACKEND_API_URL}/auth/${studentId}`;
+      const url = `https://codekerdos.in/api/auth/${studentId}`;
       axios
         .get(url)
         .then((response) => {
+          console.log("student details", response.data);
           setUser({ loggedIn: true, token, studentInfo: response.data });
         })
         .catch((error) => {
@@ -52,6 +56,15 @@ export default function CurrentCourses() {
   };
 
   const payNowHandler = (amount, description) => {
+    console.log(
+      "payNowHandler",
+      amount,
+      description,
+      user.studentInfo.name,
+      user.studentInfo.username,
+      user.studentInfo.phoneNumber
+    );
+
     payNow(
       amount,
       "1234",

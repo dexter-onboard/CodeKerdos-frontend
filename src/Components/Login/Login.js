@@ -39,7 +39,7 @@ function Login() {
     setError(null);
 
     try {
-      const url = `${process.env.REACT_APP_BACKEND_API_URL}/auth/login`;
+      const url = `https://codekerdos.in/api/auth/login`;
       console.log(url);
 
       const response = await axios.post(url, {

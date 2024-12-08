@@ -37,7 +37,7 @@ function Classroom() {
     const token = localStorage.getItem("token");
     const studentId = localStorage.getItem("studentId");
     if (token) {
-      const url = `${process.env.REACT_APP_BACKEND_API_URL}/auth/${studentId}/courses`;
+      const url = `https://codekerdos.in/api/auth/${studentId}/courses`;
       axios
         .get(url)
         .then((response) => {

@@ -34,7 +34,7 @@ function Signup() {
     setIsLoading(true);
 
     try {
-      const url = `${process.env.REACT_APP_BACKEND_API_URL}/auth/register`;
+      const url = `https://codekerdos.in/api/auth/register`;
       const response = await axios.post(url, {
         name,
         phoneNumber,

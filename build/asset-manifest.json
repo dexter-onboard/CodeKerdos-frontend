@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ebf94694.css",
-    "main.js": "/static/js/main.fbb3a930.js",
+    "main.js": "/static/js/main.c227b0b2.js",
     "static/media/view-3d-school-desk.jpg": "/static/media/view-3d-school-desk.30f89fabac39d19dd679.jpg",
     "static/media/Riya.jpg": "/static/media/Riya.90c68ed238328db60817.jpg",
     "static/media/Shail-Chabra.jpeg": "/static/media/Shail-Chabra.d447e183677c3f3e1ae6.jpeg",
@@ -18,10 +18,10 @@
     "index.html": "/index.html",
     "static/media/mask.svg": "/static/media/mask.efca3f375ce8a471de2c.svg",
     "main.ebf94694.css.map": "/static/css/main.ebf94694.css.map",
-    "main.fbb3a930.js.map": "/static/js/main.fbb3a930.js.map"
+    "main.c227b0b2.js.map": "/static/js/main.c227b0b2.js.map"
   },
   "entrypoints": [
     "static/css/main.ebf94694.css",
-    "static/js/main.fbb3a930.js"
+    "static/js/main.c227b0b2.js"
   ]
 }
