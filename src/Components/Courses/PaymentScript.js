@@ -1,6 +1,8 @@
+import { v4 as uuidv4 } from "uuid";
+
 async function payNow(amount, id, description, name, email, contact) {
-  const baseURL = "http://localhost:3001";
   const productionBaseURL = "https://codekerdos.in/api";
+  const baseURL = productionBaseURL || "http://localhost:3001";
 
   const response = await fetch(baseURL + "/payment/create-order", {
     method: "POST",
@@ -9,9 +11,9 @@ async function payNow(amount, id, description, name, email, contact) {
     },
     body: JSON.stringify({
       order: {
-        amount,
+        amount: amount * 100,
         currency: "INR",
-        receipt: "receipt#1",
+        receipt: uuidv4(),
         notes: {},
         partial_payment: true,
         first_payment_min_amount: 10 * 100,
@@ -23,6 +25,9 @@ async function payNow(amount, id, description, name, email, contact) {
 
   const order = await response.json();
 
+  console.log("whole response", response);
+  console.log("whole order", order);
+
   // Open Razorpay Checkout
   const options = {
     key: "rzp_live_BuMv1StsuJoNWq", // Replace with your Razorpay key_id
@@ -31,7 +36,7 @@ async function payNow(amount, id, description, name, email, contact) {
     name: "CodeKerdos",
     description: "Course Payment",
     order_id: order.id, // This is the order_id created in the backend
-    callback_url: "https://codekerdos.in/payment-success", // Your success URL
+    callback_url: "https://codekerdos.in?paymentResult=success", // Your success URL
     prefill: {
       name: name,
       email: email,
@@ -55,14 +60,16 @@ async function payNow(amount, id, description, name, email, contact) {
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "ok") {
-            window.location.href = "/payment-success";
+            window.location.href = "?paymentResult=success";
           } else {
-            alert("Payment verification failed");
+            // alert("Payment verification failed");
+            window.location.href = "?paymentResult=failure";
           }
         })
         .catch((error) => {
           console.error("Error:", error);
-          alert("Error verifying payment");
+          window.location.href = "?paymentResult=failure";
+          // alert("Error verifying payment");
         });
     },
   };
