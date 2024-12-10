@@ -1,9 +1,10 @@
 import HeroVideoDialog from "../ui/hero-video-dialog";
 
 export default function VideoDialog() {
-  const videoId = "C6hgFHSMkzY"; // Extracted video ID
+  const videoId = "sfiRrl52ngU"; // Extracted video ID
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; // YouTube Thumbnail URL
-  const videoSrc = `https://youtu.be/C6hgFHSMkzY`; // Correct Embed URL
+  const videoSrc = `https://youtu.be/sfiRrl52ngU`; // Correct Embed URL
+
 
   return (
     <div className="relative video-container">
