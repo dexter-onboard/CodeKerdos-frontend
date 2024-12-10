@@ -65,14 +65,14 @@ export default function CurrentCourses() {
       user.studentInfo.phoneNumber
     );
 
-    // payNow(
-    //   amount,
-    //   "1234",
-    //   description,
-    //   user.studentInfo.name,
-    //   user.studentInfo.username,
-    //   user.studentInfo.phoneNumber
-    // );
+    payNow(
+      amount,
+      "1234",
+      description,
+      user.studentInfo.name,
+      user.studentInfo.username,
+      user.studentInfo.phoneNumber
+    );
   };
 
   return (
