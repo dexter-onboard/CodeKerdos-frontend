@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import dayjs from "dayjs";
+import { userDataPushActions } from "src/utils/userSiteActions";
+import { USER_FOOTER_CONTACT_FORM_ACTION } from "src/utils/enum";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +45,7 @@ const ContactForm = () => {
           AdditionalInfo: "",
         });
         setIsSubmitted(true);
+        userDataPushActions(USER_FOOTER_CONTACT_FORM_ACTION);
         setTimeout(() => setIsSubmitted(false), 6000);
       })
       .catch((error) => console.log(error))

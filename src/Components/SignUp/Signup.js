@@ -4,6 +4,8 @@ import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collis
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Body/Body";
 import axios from "axios";
+import { userDataPushActions } from "src/utils/userSiteActions";
+import { USER_SIGN_UP_ACTION } from "src/utils/enum";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -44,6 +46,7 @@ function Signup() {
 
       if (response.status === 201) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
+        userDataPushActions(USER_SIGN_UP_ACTION, response.data.user._id);
         navigate("/");
       } else {
         setErrorMessage(response.data.message || "Sign up failed.");

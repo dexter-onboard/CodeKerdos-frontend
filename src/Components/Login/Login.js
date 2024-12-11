@@ -1,11 +1,11 @@
-import React, { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import "./Login.css";
 import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision";
-import { GoogleLogin } from "@react-oauth/google";
-import { checkValidation } from "src/utils/validation";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Body/Body";
 import axios from "axios";
+import { userDataPushActions } from "src/utils/userSiteActions";
+import { USER_SIGN_IN_ACTION } from "src/utils/enum";
 
 function Login() {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -40,7 +40,6 @@ function Login() {
 
     try {
       const url = `https://codekerdos.in/api/auth/login`;
-      console.log(url);
 
       const response = await axios.post(url, {
         username,
@@ -49,6 +48,7 @@ function Login() {
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("studentId", response.data.user._id);
+      userDataPushActions(USER_SIGN_IN_ACTION, response.data.user._id);
       navigate("/classroom");
     } catch (err) {
       console.error("Login error:", err);

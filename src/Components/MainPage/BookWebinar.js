@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Main.css";
 import dayjs from "dayjs";
+import { userDataPushActions } from "src/utils/userSiteActions";
+import { USER_BOOK_FREE_WEBINAR_FORM_ACTION } from "src/utils/enum";
 
 const WebinarBookingForm = () => {
   const [formData, setFormData] = useState({ Name: "", Email: "", Phone: "" });
@@ -31,6 +33,7 @@ const WebinarBookingForm = () => {
       .then((data) => {
         setFormData({ Name: "", Email: "", Phone: "" });
         setIsSubmitted(true);
+        userDataPushActions(USER_BOOK_FREE_WEBINAR_FORM_ACTION);
         setTimeout(() => setIsSubmitted(false), 6000);
       })
       .catch((error) => console.log(error))
