@@ -36,16 +36,21 @@ export default function BackgroundBeamsWithCollisionDemo() {
             <span className="ml-2 text-white text-lg">
               <i class="fa-solid fa-phone text-white mt-1"></i>
             </span>
-            <span className="ml-2 text-white text-lg">+91 92664 04473</span>
+            <a href="tel:+919266404473" className="ml-2 text-white text-lg">
+              +91 92664 04473
+            </a>
           </span>
           <span className="block md:inline">
             <span className="ml-2 text-white text-lg">
               {" "}
               <i class="fa-solid fa-envelope text-white mt-1"></i>
             </span>
-            <span className="ml-2 text-white text-lg">
+            <a
+              href="mailto:support@codekerdos.in"
+              className="ml-2 text-white text-lg"
+            >
               support@codekerdos.in
-            </span>
+            </a>
           </span>
         </span>
         <hr />
