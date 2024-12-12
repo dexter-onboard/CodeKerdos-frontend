@@ -1,8 +1,5 @@
 import YogeshImg from "../images/yogesh_sharma.jpg";
 import HiteshImg from "../images/Hitesh-Sharma.jpg";
-import ShivanshImg from "../images/Shivansh-Jaitly.jpeg";
-import SudhendraImg from "../images/Sudhendra-singh.jpg";
-import SahilImg from "../images/Shail-Chabra.jpeg";
 import RiyaImg from "../images/Riya.jpg";
 import HarshitImg from "../images/Harshit-Gupta.jpg";
 import GarimaImg from "../images/garima.jpeg";
@@ -46,12 +43,6 @@ const people = [
     interests: ["BlockChain,", " Backend,", " SQL,", "Shell Scripting"],
   },
   {
-    name: "Sahil Chhabra",
-    role: "SDE-1",
-    imageUrl: SahilImg,
-    interests: ["Java,", " DSA,", " MERN,", " AWS,", " SpringBoot"],
-  },
-  {
     name: "Riya Agarwal",
     role: "SDE-2",
     imageUrl: RiyaImg,
@@ -76,8 +67,6 @@ const people = [
     imageUrl: AjayJoshiImg,
     interests: ["Java,", " DSA,", " MERN,", " AWS,", " MERN"],
   },
-
-  // More people...
 ];
 
 export default function Staff() {
