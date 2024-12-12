@@ -1,8 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 
 async function payNow(amount, id, description, name, email, contact) {
+  console.log("payNow", amount, id, description, name, email, contact);
+
   const productionBaseURL = "https://codekerdos.in/api";
-  const baseURL = productionBaseURL || "http://localhost:3001";
+  const baseURL = productionBaseURL;
 
   const response = await fetch(baseURL + "/payment/create-order", {
     method: "POST",
@@ -16,7 +18,7 @@ async function payNow(amount, id, description, name, email, contact) {
         receipt: uuidv4(),
         notes: {},
         partial_payment: true,
-        first_payment_min_amount: 10 * 100,
+        first_payment_min_amount: 10000 * 100,
       },
       user_id: id,
       course_id: description,
@@ -26,16 +28,16 @@ async function payNow(amount, id, description, name, email, contact) {
   const order = await response.json();
 
   console.log("whole response", response);
-  console.log("whole order", order);
+  console.log("whole order", order.order);
 
   // Open Razorpay Checkout
   const options = {
     key: "rzp_live_BuMv1StsuJoNWq", // Replace with your Razorpay key_id
-    amount: order.amount,
-    currency: order.currency,
+    amount: order.order.amount,
+    currency: order.order.currency,
     name: "CodeKerdos",
     description: "Course Payment",
-    order_id: order.id, // This is the order_id created in the backend
+    order_id: order.order.id, // This is the order_id created in the backend
     callback_url: "https://codekerdos.in?paymentResult=success", // Your success URL
     prefill: {
       name: name,
