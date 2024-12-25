@@ -1,6 +1,13 @@
 import React from "react";
 import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision";
-import { privacyPolicyLink, termsOfUseLink } from "./pdfLinks";
+import {
+  facebookLink,
+  instagramLink,
+  linkedinLink,
+  privacyPolicyLink,
+  termsOfUseLink,
+  youtubeLink,
+} from "./pdfLinks";
 // import logoImg from "../images/logo-no-background.png";
 
 export default function BackgroundBeamsWithCollisionDemo() {
@@ -10,6 +17,10 @@ export default function BackgroundBeamsWithCollisionDemo() {
     } else {
       console.error("PDF link is not provided.");
     }
+  };
+
+  const openSocialMediaLink = (link) => {
+    window.open(link, "_blank");
   };
 
   const openPrivacyPolicy = () => {
@@ -71,6 +82,21 @@ export default function BackgroundBeamsWithCollisionDemo() {
         <div className="cursor-pointer" onClick={() => openTermsOfUse()}>
           <h6 className="text-white hover:underline">Terms & conditions</h6>
         </div>
+      </div>
+
+      <div className="flex gap-5 mt-4">
+        <button onClick={() => openSocialMediaLink(facebookLink)}>
+          <img src="facebook.png" alt="facebook" className="w-7 h-7" />
+        </button>
+        <button onClick={() => openSocialMediaLink(instagramLink)}>
+          <img src="instagram.png" alt="instagram" className="w-7 h-7" />
+        </button>
+        <button onClick={() => openSocialMediaLink(youtubeLink)}>
+          <img src="youtube.png" alt="youtube" className="w-7 h-7" />
+        </button>
+        <button onClick={() => openSocialMediaLink(linkedinLink)}>
+          <img src="linkedin.png" alt="linkedin" className="w-7 h-7" />
+        </button>
       </div>
     </BackgroundBeamsWithCollision>
   );
