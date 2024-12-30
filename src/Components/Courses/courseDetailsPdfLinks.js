@@ -1,8 +1,8 @@
 export const mernLink =
-  "https://drive.google.com/file/d/1CqCpKkWbG5lNt4rmiKHOv1LVShQ3OU_Z/view";
+  "https://codekerdos.s3.us-east-1.amazonaws.com/MERN.pdf";
 export const mernSpringLaunchLink =
-  "https://drive.google.com/file/d/1oqWbwAIL3nUL4V1CqK1A_qRGhNs5ySBE/view";
+  "https://codekerdos.s3.us-east-1.amazonaws.com/Launchpad_Node.js_%26_Springboot.pdf";
 export const mernLaunchLink =
-  "https://drive.google.com/file/d/1EAz6kBaIt4I0fveYJYx4VVQgKmRTRbEm/view";
+  "https://codekerdos.s3.us-east-1.amazonaws.com/Launchpad_NodeJS.pdf";
 export const springLaunchLink =
-  "https://drive.google.com/file/d/10BVOGBNzCNl9Tmdqpf-ywSSUVSZePRj2/view";
+  "https://codekerdos.s3.us-east-1.amazonaws.com/Launchpad_Spring_boot.pdf";
