@@ -26,7 +26,7 @@ export default function SoonCourses() {
               </p>
               <div className="product-card__price-row">
                 {/* <span className="product-card__price">$149.99</span> */}
-                <button className="product-card__btn">Comming Soon</button>
+                <button className="product-card__btn">Coming Soon</button>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function SoonCourses() {
               </p>
               <div className="product-card__price-row">
                 {/* <span className="product-card__price">$149.99</span> */}
-                <button className="product-card__btn">Comming Soon</button>
+                <button className="product-card__btn">Coming Soon</button>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ export default function SoonCourses() {
               </p>
               <div className="product-card__price-row">
                 {/* <span className="product-card__price">$149.99</span> */}
-                <button className="product-card__btn">Comming Soon</button>
+                <button className="product-card__btn">Coming Soon</button>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function SoonCourses() {
               </p>
               <div className="product-card__price-row">
                 {/* <span className="product-card__price">$149.99</span> */}
-                <button className="product-card__btn">Comming Soon</button>
+                <button className="product-card__btn">Coming Soon</button>
               </div>
             </div>
           </div>
