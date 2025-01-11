@@ -1,6 +1,5 @@
 // pages/blog.js
 import Head from "next/head";
-import Image from "next/image";
 import styles from "./styles/blog.module.css";
 import Navbar from "./utils/navbar";
 import ProgrammingLanguage from "./utils/programming";
