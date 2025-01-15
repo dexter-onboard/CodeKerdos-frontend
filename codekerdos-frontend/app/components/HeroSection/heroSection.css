@@ -1,0 +1,9 @@
+.font-class {
+  font-family: var(--font-main);
+}
+
+.temp {
+  color: #fff;
+  font-weight: bold;
+  font-family: var(--font-main);
+}
