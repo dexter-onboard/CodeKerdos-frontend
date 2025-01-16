@@ -195,7 +195,7 @@ export default function CurrentCourses() {
           <div className="product-card">
             <div className="product-card__image">
               <img
-                src="https://e0.pxfuel.com/wallpapers/225/409/desktop-wallpaper-px-node-js-188-49-kb-thumbnail.jpg"
+                src="nodejs.png"
                 alt="Red Nike Shoes"
               />
             </div>
