@@ -1,0 +1,22 @@
+body{
+    background-color: aliceblue;
+}
+
+table, td {
+    border: 1px solid black;
+}
+
+table {
+    width: 60%;
+    border-collapse: collapse;
+}
+
+h1{
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+
+h2{
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}

@@ -4,6 +4,8 @@ import App from "src/App";
 import Classroom from "../Classroom/Classroom";
 import { createContext, useState } from "react";
 import Signup from "../SignUp/Signup";
+import PrivacyPolicy from "../CompanyDocs/privacyPolicy";
+import TermsAndCondition from "../CompanyDocs/termsAndConditions";
 export const UserContext = createContext();
 
 const Body = () => {
@@ -24,6 +26,14 @@ const Body = () => {
     {
       path: "/classroom",
       element: <Classroom />,
+    },
+    {
+      path: "/privacy-policy",
+      element: <PrivacyPolicy />,
+    },
+    {
+      path: "/terms-and-conditions",
+      element: <TermsAndCondition />,
     },
   ]);
   return (

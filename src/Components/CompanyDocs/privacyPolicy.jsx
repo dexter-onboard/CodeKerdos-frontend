@@ -1,3 +1,5 @@
+import "./termsAndConditions.style.css";
+
 const PrivacyPolicy = () => {
   return (
     <>
