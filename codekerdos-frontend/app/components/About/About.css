@@ -1,3 +1,11 @@
 .font-class {
   font-family: var(--font-main);
 }
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.video-container {
+  width: 70%;
+}

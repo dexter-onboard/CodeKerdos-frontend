@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -9,11 +10,74 @@ import {
   InputLabel,
   FormControl,
   Grid,
+  SelectChangeEvent,
 } from "@mui/material";
 import "./heroSection.css";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
+import { textInputStyles } from "@/lib/commonStyles";
+import dayjs from "dayjs";
+import { bookingFormURL, codekerdosPPT } from "@/lib/commonLink";
+import { openPDFLink } from "@/lib/commonFunctions";
 
 const HomePage = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    course: "",
+    experience: "",
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      | SelectChangeEvent<string>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSaveFreeWebinarBookingData = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const url = bookingFormURL;
+    fetch(url, {
+      //   mode: "no-cors",
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `TimeStamp=${dayjs().format("DD/MM/YYYY HH:mm:ss")}&Name=${
+        formData.name
+      }&Email=${formData.email}&Phone=${formData.phoneNumber}&Course=${
+        formData.course
+      }&Experience=${formData.experience}`,
+    })
+      .then((res) => res.text())
+      .then(() => {
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          course: "",
+          experience: "",
+        });
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 6000);
+      })
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   return (
     <Box
       sx={{
@@ -33,16 +97,15 @@ const HomePage = () => {
         justifyContent="space-between"
         sx={{ maxWidth: "1500px" }}
       >
-        {/* Left Section */}
         <Grid item xs={12} md={6}>
           <Typography
             variant="h3"
             component="h1"
-            // sx={{
-            //   fontWeight: "bold",
-            //   color: "#fff",
-            // }}
-            className="font-class temp"
+            sx={{
+              fontWeight: "bold",
+              color: "#fff",
+            }}
+            className="font-class"
           >
             Master <span style={{ color: "#f1c40f" }}>Coding</span>,
             <div>
@@ -77,6 +140,7 @@ const HomePage = () => {
                 }}
                 className="font-class"
                 startIcon={<FileDownloadOutlinedIcon />}
+                onClick={() => openPDFLink(codekerdosPPT)}
               >
                 Download Brochure
               </Button>
@@ -106,81 +170,125 @@ const HomePage = () => {
               fontFamily: "var(--font-main)",
             }}
           >
-            Book a free webinar!
+            Book a free live webinar!
           </Typography>
-          <form>
-            <Grid container direction="column" spacing={4}>
-              <Grid item>
-                <TextField
-                  label="Name"
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                />
-              </Grid>
 
-              <Grid item>
-                <TextField
-                  label="Email"
-                  type="email"
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                />
-              </Grid>
+          {!isSubmitted ? (
+            <form onSubmit={handleSaveFreeWebinarBookingData}>
+              <Grid container direction="column" spacing={3}>
+                <Grid item xs={12}>
+                  <TextField
+                    sx={textInputStyles}
+                    label="Name"
+                    variant="outlined"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    fullWidth
+                    autoComplete="off"
+                  />
+                </Grid>
 
-              <Grid item>
-                <TextField
-                  label="Phone number"
-                  type="tel"
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                />
-              </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Email"
+                    type="email"
+                    variant="outlined"
+                    fullWidth
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    sx={textInputStyles}
+                    autoComplete="off"
+                  />
+                </Grid>
 
-              <Grid item>
-                <FormControl fullWidth size="small">
-                  <InputLabel>Select course</InputLabel>
-                  <Select label="Select course">
-                    <MenuItem value="Web Development">Web Development</MenuItem>
-                    <MenuItem value="Data Science">Data Science</MenuItem>
-                    <MenuItem value="UI/UX Design">UI/UX Design</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Phone number"
+                    variant="outlined"
+                    fullWidth
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    sx={textInputStyles}
+                    autoComplete="off"
+                  />
+                </Grid>
 
-              <Grid item>
-                <FormControl fullWidth size="small">
-                  <InputLabel>Select experience</InputLabel>
-                  <Select label="Select experience">
-                    <MenuItem value="Beginner">Beginner</MenuItem>
-                    <MenuItem value="Intermediate">Intermediate</MenuItem>
-                    <MenuItem value="Advanced">Advanced</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
+                <Grid item xs={12}>
+                  <FormControl fullWidth sx={textInputStyles}>
+                    <InputLabel>Select course</InputLabel>
+                    <Select
+                      name="course"
+                      value={formData.course}
+                      onChange={handleChange}
+                      label="Select course"
+                    >
+                      <MenuItem className="font-class" value="Web Development">
+                        Web Development
+                      </MenuItem>
+                      <MenuItem className="font-class" value="Data Science">
+                        Data Science
+                      </MenuItem>
+                      <MenuItem className="font-class" value="UI/UX Design">
+                        UI/UX Design
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
 
-              <Grid item>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  fullWidth
-                  className="font-class"
-                  size="large"
-                  sx={{
-                    backgroundColor: "#184279",
-                    color: "white",
-                    borderRadius: "4px",
-                    "&:hover": { backgroundColor: "#172a45" },
-                    textTransform: "capitalize",
-                  }}
-                >
-                  Book a free webinar
-                </Button>
+                <Grid item xs={12}>
+                  <FormControl fullWidth sx={textInputStyles}>
+                    <InputLabel>Select experience</InputLabel>
+                    <Select
+                      label="Select experience"
+                      name="experience"
+                      value={formData.experience}
+                      onChange={handleChange}
+                    >
+                      <MenuItem className="font-class" value="Beginner">
+                        Beginner
+                      </MenuItem>
+                      <MenuItem className="font-class" value="Intermediate">
+                        Intermediate
+                      </MenuItem>
+                      <MenuItem className="font-class" value="Advanced">
+                        Advanced
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+
+                <Grid item>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                    className="font-class"
+                    size="large"
+                    sx={{
+                      backgroundColor: "#184279",
+                      color: "white",
+                      borderRadius: "4px",
+                      "&:hover": { backgroundColor: "#172a45" },
+                      textTransform: "capitalize",
+                    }}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Booking..." : "Book a free webinar"}
+                  </Button>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
+            </form>
+          ) : (
+            <Typography
+              className="font-class"
+              sx={{ textAlign: "center", fontSize: "18px", color: "green" }}
+            >
+              Booking done! Thank you. Details will be shared to you shortly.
+            </Typography>
+          )}
         </Grid>
       </Grid>
     </Box>
