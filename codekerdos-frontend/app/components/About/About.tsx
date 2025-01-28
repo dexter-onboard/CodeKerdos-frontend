@@ -7,23 +7,24 @@ const About = () => {
   return (
     <Grid
       container
-      px={12}
-      py={10}
+      px={{ xs: 3, sm: 6, md: 10, lg: 12 }}
+      py={{ xs: 5, sm: 8, md: 10 }}
       spacing={2}
       sx={{
         background: "linear-gradient(to right, #16203B 80%, #1B99D4 120%)",
       }}
     >
-      <Grid item xs={6}>
+      <Grid item xs={12} md={6}>
         <VideoDialog />
       </Grid>
 
-      <Grid item xs={6}>
+      <Grid item xs={12} md={6}>
         <Grid
-          spacing={5}
+          // spacing={5}
           container
           direction="column"
           justifyContent="space-around"
+          spacing={{ xs: 2, sm: 3 }}
         >
           <Grid
             item
@@ -33,15 +34,16 @@ const About = () => {
           >
             <Typography
               component="span"
-              fontSize="42px"
+              className="font-class"
               fontWeight="700"
               color="#fff"
+              fontSize={{ xs: "32px", sm: "36px", md: "42px" }}
             >
               About
             </Typography>
             <Typography
               component="span"
-              fontSize="42px"
+              fontSize={{ xs: "32px", sm: "36px", md: "42px" }}
               fontWeight="700"
               color="#fff"
               ml={1}
@@ -50,13 +52,15 @@ const About = () => {
             </Typography>
           </Grid>
           <Grid item xs={4} className="">
-            <p
+            <Typography
               className="font-class"
-              style={{
+              sx={{
                 color: "#fff",
-                fontSize: "20px",
+                fontSize: { xs: "16px", sm: "18px", md: "20px" },
                 fontWeight: "300",
-                lineHeight: "36px",
+                lineHeight: { xs: "28px", sm: "32px", md: "36px" },
+                textAlign: { xs: "center", md: "left" }, // Center on mobile, left align on laptops
+                // maxWidth: "90%", // Prevents stretching
               }}
             >
               At CodeKerdos, we make coding education accessible and inclusive
@@ -64,16 +68,18 @@ const About = () => {
               and English. With 12/6 personalized support and hands-on learning,
               we empower students of all skill levels to master coding
               confidently.
-            </p>
+            </Typography>
           </Grid>
           <Grid item xs={4}>
-            <p
+            <Typography
               className="font-class"
-              style={{
+              sx={{
                 color: "#fff",
-                fontSize: "20px",
+                fontSize: { xs: "16px", sm: "18px", md: "20px" },
                 fontWeight: "300",
-                lineHeight: "36px",
+                lineHeight: { xs: "28px", sm: "32px", md: "36px" },
+                textAlign: { xs: "center", md: "left" },
+                // maxWidth: "90%",
               }}
             >
               Our unique internship placement program provides real-world
@@ -81,7 +87,7 @@ const About = () => {
               Committed to transparency and personalized guidance, we ensure
               every learner receives the mentorship and resources needed to
               overcome challenges and achieve their dreams.
-            </p>
+            </Typography>
           </Grid>
         </Grid>
       </Grid>

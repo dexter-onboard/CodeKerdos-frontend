@@ -33,7 +33,12 @@ const BookFreeWebinarPopover = () => {
           alignItems: "center",
           justifyContent: "space-evenly",
           gap: "20px",
-          width: "30%",
+          width: {
+            xs: "75%",
+            md: "55%",
+            lg: "45%",
+            xl: "30%",
+          },
         }}
       >
         <Typography

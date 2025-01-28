@@ -86,8 +86,8 @@ const HomePage = () => {
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center",
-        px: 2,
-        py: 8,
+        px: { xs: 2, md: 4 },
+        py: { xs: 6, md: 8 },
       }}
     >
       <Grid
@@ -104,6 +104,7 @@ const HomePage = () => {
             sx={{
               fontWeight: "bold",
               color: "#fff",
+              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
             }}
             className="font-class"
           >
@@ -114,7 +115,11 @@ const HomePage = () => {
           </Typography>
           <Typography
             variant="body1"
-            sx={{ mt: 2, color: "rgba(255, 255, 255, 0.8)", fontSize: "20px" }}
+            sx={{
+              mt: 2,
+              color: "rgba(255, 255, 255, 0.8)",
+              fontSize: { xs: "16px", sm: "18px", md: "20px" },
+            }}
             className="font-class"
           >
             Empowering students and professionals with expert-led
@@ -152,12 +157,14 @@ const HomePage = () => {
           item
           xs={12}
           md={6}
-          lg={4}
+          lg={6}
           sx={{
             backgroundColor: "white",
             borderRadius: 2,
-            p: 4,
+            p: { xs: 3, md: 4 },
             boxShadow: 3,
+            width: "100%",
+            maxWidth: { xs: "100%", md: "450px" },
           }}
         >
           <Typography
@@ -168,6 +175,7 @@ const HomePage = () => {
               fontWeight: "800",
               color: "#0d1831",
               fontFamily: "var(--font-main)",
+              fontSize: { xs: "1.5rem", md: "1.8rem" },
             }}
           >
             Book a free live webinar!

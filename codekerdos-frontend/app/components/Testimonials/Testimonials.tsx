@@ -166,6 +166,17 @@ const Testimonials = () => {
           }}
           modules={[Navigation]}
           className="testimonials-swiper"
+          breakpoints={{
+            1366: {
+              slidesPerView: 4,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            768: {
+              slidesPerView: 1,
+            },
+          }}
         >
           {testimonials.map((testimonial: ITestimonial) => (
             <SwiperSlide style={{ padding: "2px" }} key={uuidv4()}>

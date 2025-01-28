@@ -192,6 +192,17 @@ const Team = () => {
             }}
             modules={[Navigation]}
             className="team-swiper"
+            breakpoints={{
+              1366: {
+                slidesPerView: 4,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+              768: {
+                slidesPerView: 1,
+              },
+            }}
           >
             {profileData.map((profile: IProfile) => (
               <SwiperSlide style={{ padding: "2px" }} key={uuidv4()}>

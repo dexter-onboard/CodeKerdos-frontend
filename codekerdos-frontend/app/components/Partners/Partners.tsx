@@ -68,7 +68,7 @@ const Partners = () => {
       <Grid
         container
         // spacing={2}
-        pl={30}
+        pl={{ md: 22, xl: 30 }}
         justifyContent={"center"}
         alignItems={"center"}
         mt={12}

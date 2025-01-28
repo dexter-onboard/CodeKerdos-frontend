@@ -258,14 +258,30 @@ const ShortCourses = () => {
           }}
           modules={[Navigation]}
           className="short-courses-swiper"
+          breakpoints={{
+            1366: {
+              slidesPerView: 4,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            768: {
+              slidesPerView: 1,
+            },
+          }}
         >
           {shortCourses.map((shortCourse: IShortCourse) => (
             <SwiperSlide style={{ padding: "2px" }} key={uuidv4()}>
               <Card
                 sx={{
                   width: "auto",
-                  maxWidth: "410px",
-                  height: "474px",
+                  maxWidth: {
+                    xs: "350px",
+                    md: "350px",
+                    lg: "350px",
+                    xl: "430px",
+                  },
+                  height: "450px",
                   boxShadow: 3,
                   borderRadius: "8px",
                 }}

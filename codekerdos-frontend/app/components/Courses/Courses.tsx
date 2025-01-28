@@ -184,7 +184,7 @@ const Courses = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-evenly",
-          padding: "32px",
+          padding: { xs: "24px", md: "32px" },
         }}
       >
         <Box
@@ -204,7 +204,7 @@ const Courses = () => {
             zIndex: 1,
             display: "flex",
             flexWrap: "wrap",
-            gap: "20px",
+            gap: "30px",
             justifyContent: "space-evenly",
           }}
         >
@@ -213,10 +213,21 @@ const Courses = () => {
             courses.map((course: ICourse) => (
               <Card
                 key={course.courseID}
-                sx={{ maxWidth: 500, borderRadius: "8px" }}
+                sx={{
+                  maxWidth: {
+                    xs: "100%",
+                    sm: "420px",
+                    md: "450px",
+                    lg: "500px",
+                  },
+                  borderRadius: "8px",
+                }}
               >
                 <CardMedia
-                  sx={{ height: 200, width: 425 }}
+                  sx={{
+                    height: 200,
+                    width: { xs: "100%", sm: "400px", md: "425px" },
+                  }}
                   image={course.imageURL}
                   title={course.title}
                 />
@@ -224,7 +235,7 @@ const Courses = () => {
                 <CardContent>
                   <Typography
                     className="font-class"
-                    fontSize={"20px"}
+                    fontSize={{ xs: "18px", sm: "20px" }}
                     fontWeight={"600"}
                     gutterBottom
                     variant="h5"
@@ -268,7 +279,7 @@ const Courses = () => {
 
                         <Typography
                           className="font-class"
-                          fontSize={"14px"}
+                          fontSize={{ xs: "13px", sm: "14px" }}
                           fontWeight={"500"}
                           gutterBottom
                           variant="body1"
@@ -287,7 +298,7 @@ const Courses = () => {
                       textDecoration: "underline",
                       textTransform: "capitalize",
                       fontWeight: "600",
-                      fontSize: "14px",
+                      fontSize: { xs: "13px", sm: "14px" },
                       color: "#16203B",
                       marginTop: "8px",
                     }}
@@ -309,7 +320,7 @@ const Courses = () => {
                   <Typography
                     variant="h4"
                     className="font-class"
-                    fontSize={"24px"}
+                    fontSize={{ xs: "22px", sm: "24px" }}
                     fontWeight={"700"}
                   >
                     ₹{course.price}
@@ -318,7 +329,7 @@ const Courses = () => {
                     sx={{
                       backgroundColor: "#1B99D4",
                       textTransform: "capitalize",
-                      padding: "8px 30px",
+                      padding: { xs: "6px 25px", sm: "8px 30px" },
                     }}
                     variant="contained"
                     size="small"

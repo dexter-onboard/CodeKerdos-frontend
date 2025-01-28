@@ -17,7 +17,13 @@ import { privacyPolicy, socialMediaLinks, termsNCond } from "@/lib/commonLink";
 
 const Footer = () => {
   const footerBtnStyle = {
-    fontSize: "16px",
+    // fontSize: "16px",
+    fontSize: {
+      xs: "10px",
+      md: "12px",
+      lg: "14px",
+      xl: "16px",
+    },
     fontWeight: "400",
     textTransform: "none",
     color: "#FCF9F9",
@@ -49,15 +55,27 @@ const Footer = () => {
           style={{ height: "40px", width: "auto" }}
         />
       </Box>
-      <Grid container spacing={4} justifyContent={"center"}>
-        <Grid item xs={7}>
+
+      <Grid container justifyContent={"space-evenly"}>
+        <Grid item xs={8}>
           <Grid container>
-            <Grid item xs={3} display={"flex"} flexDirection={"column"} gap={2}>
+            <Grid
+              item
+              xs={3.5}
+              display={"flex"}
+              flexDirection={"column"}
+              gap={2}
+            >
               <Box display="flex" alignItems="center" gap={1}>
                 <MailIcon fontSize="small" />
                 <Typography
                   sx={{
-                    fontSize: "16px",
+                    fontSize: {
+                      xs: "10px",
+                      md: "12px",
+                      lg: "14px",
+                      xl: "16px",
+                    },
                     color: "#FCF9F9",
                     fontWeight: "400",
                   }}
@@ -77,7 +95,12 @@ const Footer = () => {
                 <Typography
                   className="font-class"
                   sx={{
-                    fontSize: "16px",
+                    fontSize: {
+                      xs: "10px",
+                      md: "12px",
+                      lg: "14px",
+                      xl: "16px",
+                    },
                     color: "#FCF9F9",
                     fontWeight: "400",
                   }}
@@ -92,7 +115,7 @@ const Footer = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={3} display={"flex"} flexDirection={"column"} gap={2}>
+            <Grid item xs={2} display={"flex"} flexDirection={"column"} gap={2}>
               <Box>
                 <Button
                   onClick={() => handleScrollToSection("courses")}
@@ -153,10 +176,16 @@ const Footer = () => {
           </Grid>
         </Grid>
 
-        <Grid item md={3}>
+        <Grid item md={2}>
           <Typography
             sx={{
-              fontSize: "18px",
+              // fontSize: "18px",
+              fontSize: {
+                xs: "12px",
+                md: "14px",
+                lg: "16px",
+                xl: "18px",
+              },
               color: "#FCF9F9",
               fontWeight: "400",
             }}
