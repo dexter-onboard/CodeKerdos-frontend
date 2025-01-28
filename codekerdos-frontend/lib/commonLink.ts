@@ -4,6 +4,9 @@ export const bookingFormURL: string =
 export const contactFormURL: string =
   "https://script.google.com/macros/s/AKfycbyZCOjfYf3Zz_SCAyM6KJyAfshM2OY2R_95V-E_MzFuxfSLiCUaqZUmbN4AICofoje2/exec";
 
+export const broucherDownloadFormURL: string =
+  "https://script.google.com/macros/s/AKfycbxhGkkTsJBzveKAybSIObAyRRpS6qzGGp5L6s_O8huEufjvKLdq8j146lPA5JHRT6Z0/exec";
+
 export const baseUrl: string = "https://codekerdos.in/api/auth";
 
 export const loginUrl: string = `${baseUrl}/login`;
@@ -36,6 +39,9 @@ export const brochureLinks = {
     "https://codekerdos.s3.us-east-1.amazonaws.com/LaunchPad-SpringBoot-Brochure.pdf",
   launchNodeSpringBoot:
     "https://codekerdos.s3.us-east-1.amazonaws.com/LaunchPad-Nodejs-SpringBoot-Brochure.pdf",
+  launchPythonNode:
+    "https://codekerdos.s3.us-east-1.amazonaws.com/LaunchPad-Python-Nodejs-Brochure.pdf",
+  launchMERN: "https://codekerdos.s3.us-east-1.amazonaws.com/MERN-Brochure.pdf",
 };
 
 export const termsNCond: string =

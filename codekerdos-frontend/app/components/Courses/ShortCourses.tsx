@@ -6,7 +6,12 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   IconButton,
+  TextField,
   Typography,
 } from "@mui/material";
 // import { useState } from "react";
@@ -22,8 +27,10 @@ import { Navigation } from "swiper/modules";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import { openPDFLink } from "@/lib/commonFunctions";
-import { brochureLinks } from "@/lib/commonLink";
+import { brochureLinks, broucherDownloadFormURL } from "@/lib/commonLink";
 import SwiperCore from "swiper";
+import { textInputStyles } from "@/lib/commonStyles";
+import dayjs from "dayjs";
 
 interface IShortCourse {
   title: string;
@@ -34,6 +41,54 @@ interface IShortCourse {
 }
 
 const ShortCourses = () => {
+  const [open, setOpen] = useState(false);
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+  const [selectedBrochure, setSelectedBrochure] = useState<string | null>(null);
+
+  const handleOpenModal = (brochureLink: string) => {
+    setSelectedBrochure(brochureLink);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedBrochure(null);
+  };
+
+  const handleDownload = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const url = broucherDownloadFormURL;
+    fetch(url, {
+      //   mode: "no-cors",
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `TimeStamp=${dayjs().format("DD/MM/YYYY HH:mm:ss")}&Name=${
+        userData.name
+      }&Email=${userData.email}&PhoneNumber=${userData.phone}`,
+    })
+      .then((res) => res.text())
+      .then(() => {
+        if (selectedBrochure) {
+          openPDFLink(selectedBrochure);
+          setTimeout(() => handleClose(), 1000);
+        }
+        setUserData({
+          name: "",
+          email: "",
+          phone: "",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        handleClose();
+      });
+  };
+
   const [courseSwiperRef, setCourseSwiperRef] = useState<SwiperCore | null>(
     null
   );
@@ -254,7 +309,7 @@ const ShortCourses = () => {
                       marginTop: "8px",
                     }}
                     size="medium"
-                    onClick={() => openPDFLink(shortCourse.brochureLink)}
+                    onClick={() => handleOpenModal(shortCourse.brochureLink)}
                   >
                     Download Brochure
                   </Button>
@@ -289,6 +344,75 @@ const ShortCourses = () => {
           ))}
         </Swiper>
       </Box>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle className="font-class">Enter Your Details</DialogTitle>
+        <DialogContent>
+          <TextField
+            fullWidth
+            margin="dense"
+            label="Name"
+            value={userData.name}
+            sx={textInputStyles}
+            required
+            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+          />
+          <TextField
+            fullWidth
+            margin="dense"
+            label="Email"
+            type="email"
+            value={userData.email}
+            sx={textInputStyles}
+            required
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
+          />
+          <TextField
+            fullWidth
+            margin="dense"
+            label="Phone Number"
+            type="tel"
+            value={userData.phone}
+            sx={textInputStyles}
+            required
+            onChange={(e) =>
+              setUserData({ ...userData, phone: e.target.value })
+            }
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button
+            sx={{
+              fontSize: "15px",
+              fontWeight: "700",
+              textTransform: "none",
+            }}
+            onClick={handleClose}
+            className="font-class"
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleDownload}
+            variant="contained"
+            className="font-class"
+            disabled={!userData.name || !userData.email || !userData.phone}
+            sx={{
+              fontSize: "15px",
+              fontWeight: "700",
+              textTransform: "none",
+              backgroundColor: "#1B99D4",
+              "&:hover": {
+                backgroundColor: "#1283b8",
+              },
+            }}
+          >
+            Download
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

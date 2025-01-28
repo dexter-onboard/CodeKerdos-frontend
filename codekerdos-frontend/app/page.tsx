@@ -1,5 +1,5 @@
 "use client";
-import { Box } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import About from "./components/About/About";
 import HeroSection from "./components/HeroSection/HeroSection";
 import Offering from "./components/Offering/Offering";
@@ -18,6 +18,28 @@ import BookFreeWebinarPopover from "./components/BookFreeWebinarPopover/BookFree
 import Navbar from "./components/Navbar/Navbar";
 
 export default function Home() {
+  const isMobileOrTablet = useMediaQuery("(max-width: 1024px)");
+
+  if (isMobileOrTablet) {
+    return (
+      <Box
+        sx={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#10172A",
+          color: "white",
+          textAlign: "center",
+        }}
+      >
+        <Typography className="font-class" variant="h5">
+          Under Construction. Will be up soon!
+        </Typography>
+      </Box>
+    );
+  }
+
   return (
     <Box>
       <Navbar />
