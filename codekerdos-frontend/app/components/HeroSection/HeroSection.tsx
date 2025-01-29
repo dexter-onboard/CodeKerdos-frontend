@@ -233,14 +233,47 @@ const HomePage = () => {
                       onChange={handleChange}
                       label="Select course"
                     >
-                      <MenuItem className="font-class" value="Web Development">
-                        Web Development
+                      <MenuItem
+                        className="font-class"
+                        value="LaunchPad Nodejs & SpringBoot"
+                      >
+                        LaunchPad Nodejs & SpringBoot
                       </MenuItem>
-                      <MenuItem className="font-class" value="Data Science">
-                        Data Science
+                      <MenuItem
+                        className="font-class"
+                        value="MERN Stack Development"
+                      >
+                        MERN Stack Development
                       </MenuItem>
-                      <MenuItem className="font-class" value="UI/UX Design">
-                        UI/UX Design
+                      <MenuItem
+                        className="font-class"
+                        value="FullStack Launchpad (Spring Boot)"
+                      >
+                        FullStack Launchpad (Spring Boot)
+                      </MenuItem>
+                      <MenuItem
+                        className="font-class"
+                        value="FullStack Launchpad (Node.js)"
+                      >
+                        FullStack Launchpad (Node.js)
+                      </MenuItem>
+                      <MenuItem
+                        className="font-class"
+                        value="LaunchPad Python & Nodejs"
+                      >
+                        LaunchPad Python & Nodejs
+                      </MenuItem>
+                      <MenuItem
+                        className="font-class"
+                        value="Full Stack with Spring Boot"
+                      >
+                        Full Stack with Spring Boot
+                      </MenuItem>
+                      <MenuItem
+                        className="font-class"
+                        value="Full Stack with Node.js"
+                      >
+                        Full Stack with Node.js
                       </MenuItem>
                     </Select>
                   </FormControl>
