@@ -36,7 +36,7 @@ const BookFreeWebinarPopover = () => {
           width: {
             xs: "75%",
             md: "55%",
-            lg: "45%",
+            lg: "42%",
             xl: "30%",
           },
         }}

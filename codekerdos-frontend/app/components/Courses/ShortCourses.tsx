@@ -113,8 +113,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Master the fundamentals of C programming with a focus on syntax, pointers, and memory management in just 1.5 months course.",
       brochureLink: brochureLinks.shortHandC,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 8,000",
+      amount: 8000,
       imageURL: "/images/short-c.svg",
     },
     {
@@ -122,8 +122,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Learn object-oriented programming with classes, inheritance, and polymorphism in just 1.5 month course.",
       brochureLink: brochureLinks.shortHandCPlus,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 8,000",
+      amount: 8000,
       imageURL: "/images/short-c++.svg",
     },
     {
@@ -131,8 +131,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Dive into Java's advanced features like multithreading and collections in just 1.5 month course.",
       brochureLink: brochureLinks.shortHandJava,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 8,000",
+      amount: 8000,
       imageURL: "/images/short-java.svg",
     },
     {
@@ -140,8 +140,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Explore Python's versatility for web development, data analysis, and machine learning in just 1.5 month course.",
       brochureLink: brochureLinks.shortHandPython,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 8,000",
+      amount: 8000,
       imageURL: "/images/short-python.svg",
     },
     {
@@ -149,8 +149,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Combine core C with DSA concepts, perfect for technical interview preparation in just 2.5 month course.",
       brochureLink: brochureLinks.shortHandC_DSA,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 18,000",
+      amount: 18000,
       imageURL: "/images/short-c-dsa.svg",
     },
     {
@@ -158,8 +158,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Learn C++ with comprehensive DSA concepts for competitive programming and tech jobs in just 2.5 month course.",
       brochureLink: brochureLinks.shortHandCPlusDSA,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 18,000",
+      amount: 18000,
       imageURL: "/images/short-c++-dsa.svg",
     },
     {
@@ -167,8 +167,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Gain expertise in Java and DSA with a focus on problem-solving for software development in just 2.5 month course.",
       brochureLink: brochureLinks.shortHandJava_DSA,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 18,000",
+      amount: 18000,
       imageURL: "/images/short-java-dsa.svg",
     },
 
@@ -177,8 +177,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Master Python and DSA for data science, AI/ML, and technical interviews in just 2.5 month course.",
       brochureLink: brochureLinks.shortHandPython_DSA,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 18,000",
+      amount: 18000,
       imageURL: "/images/short-python-dsa.svg",
     },
     {
@@ -186,8 +186,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Learn front-end (HTML, CSS, JavaScript) and back-end (Node.js) to build dynamic web applications in 5-6 months.",
       brochureLink: brochureLinks.shortHandMern,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 25,000",
+      amount: 25000,
       imageURL: "/images/short-fullstack-node.svg",
     },
     {
@@ -195,8 +195,8 @@ const ShortCourses = ({ user }: { user: IUser }) => {
       description:
         "Master enterprise-level development with Spring Boot and front-end technologies in 5-6 months.",
       brochureLink: brochureLinks.shortHandSpring,
-      price: "₹ 10,000",
-      amount: 10000,
+      price: "₹ 25,000",
+      amount: 25000,
       imageURL: "/images/short-fullstack-spring.svg",
     },
   ];
@@ -283,8 +283,14 @@ const ShortCourses = ({ user }: { user: IUser }) => {
           modules={[Navigation]}
           className="short-courses-swiper"
           breakpoints={{
-            1366: {
+            1500: {
               slidesPerView: 4,
+            },
+            1440: {
+              slidesPerView: 3,
+            },
+            1366: {
+              slidesPerView: 3,
             },
             1024: {
               slidesPerView: 3,
@@ -295,7 +301,7 @@ const ShortCourses = ({ user }: { user: IUser }) => {
           }}
         >
           {shortCourses.map((shortCourse: IShortCourse) => (
-            <SwiperSlide style={{ padding: "2px" }} key={uuidv4()}>
+            <SwiperSlide style={{ padding: "2.5rem" }} key={uuidv4()}>
               <Card
                 sx={{
                   width: "auto",

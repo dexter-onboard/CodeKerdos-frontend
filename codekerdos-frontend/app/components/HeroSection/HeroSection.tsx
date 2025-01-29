@@ -147,7 +147,7 @@ const HomePage = () => {
                 startIcon={<FileDownloadOutlinedIcon />}
                 onClick={() => openPDFLink(codekerdosPPT)}
               >
-                Download Brochure
+                Know About Us!
               </Button>
             </Grid>
           </Grid>

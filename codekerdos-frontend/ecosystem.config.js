@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "nextjs-app", // Name of your application
       script: "npm", // Use npm as the script runner
-      args: "run dev", // Run the `start` script
+      args: "run start", // Run the `start` script
       cwd: "./", // Path to your project
       instances: 1, // Use the maximum number of instances (optional)
       autorestart: true, // Automatically restart the app if it crashes
