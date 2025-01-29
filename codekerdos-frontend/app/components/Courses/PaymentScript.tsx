@@ -1,6 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
 
-async function payNow(amount, id, description, name, email, contact) {
+async function payNow(
+  amount: number,
+  id: string,
+  description: string,
+  name: string,
+  email: string,
+  contact: string
+) {
   const productionBaseURL = "https://codekerdos.in/api";
   const baseURL = productionBaseURL;
 
@@ -27,7 +34,7 @@ async function payNow(amount, id, description, name, email, contact) {
 
   // Open Razorpay Checkout
   const options = {
-    key: "rzp_live_BuMv1StsuJoNWq", // Replace with your Razorpay key_id
+    key: "rzp_live_BuMv1StsuJoNWq", // Razorpay key_id
     amount: order.order.amount,
     currency: order.order.currency,
     name: "CodeKerdos",
@@ -42,7 +49,7 @@ async function payNow(amount, id, description, name, email, contact) {
     theme: {
       color: "#F37254",
     },
-    handler: function (response) {
+    handler: function (response: any) {
       fetch(baseURL + "/payment/verify-payment", {
         method: "POST",
         headers: {
@@ -71,6 +78,7 @@ async function payNow(amount, id, description, name, email, contact) {
     },
   };
 
+  //@ts-expect-error
   const rzp = new Razorpay(options);
   rzp.open();
 }

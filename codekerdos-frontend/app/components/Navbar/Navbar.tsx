@@ -29,7 +29,7 @@ const settings = ["Classroom"];
 
 type setUserType = Dispatch<SetStateAction<IUser>>;
 
-const Navbar = ({ user, setUser }: { user: object; setUser: setUserType }) => {
+const Navbar = ({ user, setUser }: { user: IUser; setUser: setUserType }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const router = useRouter();
@@ -85,7 +85,7 @@ const Navbar = ({ user, setUser }: { user: object; setUser: setUserType }) => {
           console.error("error fetching student details ", error);
         });
     }
-  }, []);
+  }, [setUser]);
 
   return (
     <AppBar sx={{ backgroundColor: "#0d1831" }} position="static">
