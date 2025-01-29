@@ -18,6 +18,10 @@ export default function RootLayout({
         className={`${primary.variable} ${secondary.variable} ${tertiary.variable} ${inter.variable}`}
       >
         {children}
+        <script
+          async
+          src="https://checkout.razorpay.com/v1/checkout.js"
+        ></script>
       </body>
     </html>
   );

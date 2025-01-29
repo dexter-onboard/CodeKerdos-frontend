@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import { handleScrollToSection } from "@/lib/commonFunctions";
 import axios from "axios";
 import { baseUrl } from "@/lib/commonLink";
+import { IUser } from "@/app/page";
 
 const pages = [
   { sectionName: "About Us", sectionId: "about-us" },
@@ -26,15 +27,12 @@ const pages = [
 ];
 const settings = ["Classroom"];
 
-const Navbar = () => {
+type setUserType = Dispatch<SetStateAction<IUser>>;
+
+const Navbar = ({ user, setUser }: { user: object; setUser: setUserType }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const router = useRouter();
-  const [user, setUser] = useState({
-    loggedIn: false,
-    token: "",
-    studentInfo: { name: "" },
-  });
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -58,7 +56,11 @@ const Navbar = () => {
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("studentId");
-    setUser({ loggedIn: false, token: "", studentInfo: { name: "" } });
+    setUser({
+      loggedIn: false,
+      token: "",
+      studentInfo: { name: "", phoneNumber: "", username: "" },
+    });
     window.location.reload();
   };
 
@@ -67,7 +69,11 @@ const Navbar = () => {
     const studentId = localStorage.getItem("studentId");
 
     if (token) {
-      setUser({ loggedIn: true, token, studentInfo: { name: "" } });
+      setUser({
+        loggedIn: true,
+        token,
+        studentInfo: { name: "", phoneNumber: "", username: "" },
+      });
 
       const url = `${baseUrl}/${studentId}`;
       axios

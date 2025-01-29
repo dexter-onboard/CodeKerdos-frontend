@@ -31,16 +31,19 @@ import { brochureLinks, broucherDownloadFormURL } from "@/lib/commonLink";
 import SwiperCore from "swiper";
 import { textInputStyles } from "@/lib/commonStyles";
 import dayjs from "dayjs";
+import payNow from "./PaymentScript";
+import { IUser } from "@/app/page";
 
 interface IShortCourse {
   title: string;
   description: string;
   brochureLink: string;
   price: string;
+  amount: number;
   imageURL: string;
 }
 
-const ShortCourses = () => {
+const ShortCourses = ({ user }: { user: IUser }) => {
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
@@ -111,6 +114,7 @@ const ShortCourses = () => {
         "Master the fundamentals of C programming with a focus on syntax, pointers, and memory management in just 1.5 months course.",
       brochureLink: brochureLinks.shortHandC,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-c.svg",
     },
     {
@@ -119,6 +123,7 @@ const ShortCourses = () => {
         "Learn object-oriented programming with classes, inheritance, and polymorphism in just 1.5 month course.",
       brochureLink: brochureLinks.shortHandCPlus,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-c++.svg",
     },
     {
@@ -127,6 +132,7 @@ const ShortCourses = () => {
         "Dive into Java's advanced features like multithreading and collections in just 1.5 month course.",
       brochureLink: brochureLinks.shortHandJava,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-java.svg",
     },
     {
@@ -135,6 +141,7 @@ const ShortCourses = () => {
         "Explore Python's versatility for web development, data analysis, and machine learning in just 1.5 month course.",
       brochureLink: brochureLinks.shortHandPython,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-python.svg",
     },
     {
@@ -143,6 +150,7 @@ const ShortCourses = () => {
         "Combine core C with DSA concepts, perfect for technical interview preparation in just 2.5 month course.",
       brochureLink: brochureLinks.shortHandC_DSA,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-c-dsa.svg",
     },
     {
@@ -151,6 +159,7 @@ const ShortCourses = () => {
         "Learn C++ with comprehensive DSA concepts for competitive programming and tech jobs in just 2.5 month course.",
       brochureLink: brochureLinks.shortHandCPlusDSA,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-c++-dsa.svg",
     },
     {
@@ -159,6 +168,7 @@ const ShortCourses = () => {
         "Gain expertise in Java and DSA with a focus on problem-solving for software development in just 2.5 month course.",
       brochureLink: brochureLinks.shortHandJava_DSA,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-java-dsa.svg",
     },
 
@@ -168,6 +178,7 @@ const ShortCourses = () => {
         "Master Python and DSA for data science, AI/ML, and technical interviews in just 2.5 month course.",
       brochureLink: brochureLinks.shortHandPython_DSA,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-python-dsa.svg",
     },
     {
@@ -176,6 +187,7 @@ const ShortCourses = () => {
         "Learn front-end (HTML, CSS, JavaScript) and back-end (Node.js) to build dynamic web applications in 5-6 months.",
       brochureLink: brochureLinks.shortHandMern,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-fullstack-node.svg",
     },
     {
@@ -184,6 +196,7 @@ const ShortCourses = () => {
         "Master enterprise-level development with Spring Boot and front-end technologies in 5-6 months.",
       brochureLink: brochureLinks.shortHandSpring,
       price: "₹ 10,000",
+      amount: 10000,
       imageURL: "/images/short-fullstack-spring.svg",
     },
   ];
@@ -198,6 +211,26 @@ const ShortCourses = () => {
     if (courseSwiperRef) {
       courseSwiperRef.slidePrev();
     }
+  };
+
+  const payNowHandler = (amount: number, description: string) => {
+    console.log(
+      "payNowHandler",
+      amount,
+      description,
+      user.studentInfo.name,
+      user.studentInfo.username,
+      user.studentInfo.phoneNumber
+    );
+
+    payNow(
+      amount,
+      "1234",
+      description,
+      user.studentInfo.name,
+      user.studentInfo.username,
+      user.studentInfo.phoneNumber
+    );
   };
 
   return (
@@ -351,6 +384,9 @@ const ShortCourses = () => {
                       backgroundColor: "#1B99D4",
                       padding: "6px 16px",
                     }}
+                    onClick={() =>
+                      payNowHandler(shortCourse.amount, shortCourse.description)
+                    }
                   >
                     Buy Now
                   </Button>

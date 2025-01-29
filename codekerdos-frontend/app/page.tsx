@@ -16,9 +16,26 @@ import PricingBanner from "./components/PricingBanner/PricingBanner";
 import WhatsappButton from "./components/WhatsappButton/WhatsappButton";
 import BookFreeWebinarPopover from "./components/BookFreeWebinarPopover/BookFreeWebinarPopover";
 import Navbar from "./components/Navbar/Navbar";
+import { useState } from "react";
+
+export type IUser = {
+  loggedIn: boolean;
+  token: string;
+  studentInfo: {
+    name: string;
+    username: string;
+    phoneNumber: string;
+  };
+};
 
 export default function Home() {
   const isMobileOrTablet = useMediaQuery("(max-width: 1024px)");
+
+  const [user, setUser] = useState<IUser>({
+    loggedIn: false,
+    token: "",
+    studentInfo: { name: "", username: "", phoneNumber: "" },
+  });
 
   if (isMobileOrTablet) {
     return (
@@ -42,7 +59,7 @@ export default function Home() {
 
   return (
     <Box>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <HeroSection />
       <Box id="about-us">
         <About />
@@ -52,9 +69,9 @@ export default function Home() {
       </Box>
       <PricingBanner />
       <Box id="courses">
-        <Courses />
+        <Courses user={user} />
       </Box>
-      <ShortCourses />
+      <ShortCourses user={user} />
       <Box id="testimonials">
         <Testimonials />
       </Box>

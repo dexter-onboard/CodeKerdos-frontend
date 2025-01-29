@@ -21,6 +21,8 @@ import dayjs from "dayjs";
 import { openPDFLink } from "@/lib/commonFunctions";
 import { brochureLinks, broucherDownloadFormURL } from "@/lib/commonLink";
 import { textInputStyles } from "@/lib/commonStyles";
+import payNow from "./PaymentScript";
+import { IUser } from "@/app/page";
 
 interface ICourse {
   courseID: string;
@@ -94,7 +96,7 @@ const courses: ICourse[] = [
   },
 ];
 
-const Courses = () => {
+const Courses = ({ user }: { user: IUser }) => {
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
@@ -142,6 +144,26 @@ const Courses = () => {
         console.log(error);
         handleClose();
       });
+  };
+
+  const payNowHandler = (amount: number, description: string) => {
+    console.log(
+      "payNowHandler",
+      amount,
+      description,
+      user.studentInfo.name,
+      user.studentInfo.username,
+      user.studentInfo.phoneNumber
+    );
+
+    payNow(
+      amount,
+      "1234",
+      description,
+      user.studentInfo.name,
+      user.studentInfo.username,
+      user.studentInfo.phoneNumber
+    );
   };
 
   return (
@@ -333,6 +355,9 @@ const Courses = () => {
                     }}
                     variant="contained"
                     size="small"
+                    onClick={() =>
+                      payNowHandler(Number(course.price), course.description[0])
+                    }
                   >
                     Buy Now
                   </Button>
