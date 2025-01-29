@@ -214,15 +214,6 @@ const ShortCourses = ({ user }: { user: IUser }) => {
   };
 
   const payNowHandler = (amount: number, description: string) => {
-    console.log(
-      "payNowHandler",
-      amount,
-      description,
-      user.studentInfo.name,
-      user.studentInfo.username,
-      user.studentInfo.phoneNumber
-    );
-
     payNow(
       amount,
       "1234",

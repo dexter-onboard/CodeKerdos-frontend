@@ -29,6 +29,7 @@ interface ICourse {
   title: string;
   description: string[];
   price: string;
+  amount: number;
   imageURL: string;
   brochureLink: string;
 }
@@ -43,6 +44,7 @@ const courses: ICourse[] = [
       "Fully online",
     ],
     price: "70,000",
+    amount: 70000,
     imageURL: "/images/launch-node-spring.svg",
     brochureLink: brochureLinks.launchNodeSpringBoot,
   },
@@ -55,6 +57,7 @@ const courses: ICourse[] = [
       "Fully online",
     ],
     price: "40,000",
+    amount: 40000,
     imageURL: "/images/launch-mern.svg",
     brochureLink: brochureLinks.launchMERN,
   },
@@ -67,6 +70,7 @@ const courses: ICourse[] = [
       "Fully online",
     ],
     price: "60,000",
+    amount: 60000,
     imageURL: "/images/launch-spring.svg",
     brochureLink: brochureLinks.launchSpringBoot,
   },
@@ -79,6 +83,7 @@ const courses: ICourse[] = [
       "Fully online",
     ],
     price: "60,000",
+    amount: 60000,
     imageURL: "/images/launch-node.svg",
     brochureLink: brochureLinks.launchNodeJS,
   },
@@ -91,6 +96,7 @@ const courses: ICourse[] = [
       "Fully online",
     ],
     price: "70,000",
+    amount: 70000,
     imageURL: "/images/launch-python-node.svg",
     brochureLink: brochureLinks.launchPythonNode,
   },
@@ -147,15 +153,6 @@ const Courses = ({ user }: { user: IUser }) => {
   };
 
   const payNowHandler = (amount: number, description: string) => {
-    console.log(
-      "payNowHandler",
-      amount,
-      description,
-      user.studentInfo.name,
-      user.studentInfo.username,
-      user.studentInfo.phoneNumber
-    );
-
     payNow(
       amount,
       "1234",
@@ -356,7 +353,7 @@ const Courses = ({ user }: { user: IUser }) => {
                     variant="contained"
                     size="small"
                     onClick={() =>
-                      payNowHandler(Number(course.price), course.description[0])
+                      payNowHandler(course.amount, course.description[0])
                     }
                   >
                     Buy Now

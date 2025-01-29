@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
 async function payNow(amount, id, description, name, email, contact) {
-  console.log("payNow", amount, id, description, name, email, contact);
-
   const productionBaseURL = "https://codekerdos.in/api";
   const baseURL = productionBaseURL;
 
@@ -26,9 +24,6 @@ async function payNow(amount, id, description, name, email, contact) {
   });
 
   const order = await response.json();
-
-  console.log("whole response", response);
-  console.log("whole order", order.order);
 
   // Open Razorpay Checkout
   const options = {
