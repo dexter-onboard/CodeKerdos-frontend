@@ -103,8 +103,10 @@ const courses: ICourse[] = [
     description: [
       <span key={4}>
         Learn Python, DSA with python, frontend
-        <br /> (HTML, CSS, JS),
-        <br /> backend development with Node.js and React.js.
+        <br />
+        (HTML, CSS, JS), backend development with
+        <br />
+        Node.js and React.js.
       </span>,
       "Beginner to advanced concepts",
       "Duration: 11 months",
