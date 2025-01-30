@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CheckIcon from "@mui/icons-material/Check";
 import "./courses.css";
@@ -27,7 +27,7 @@ import { IUser } from "@/app/page";
 interface ICourse {
   courseID: string;
   title: string;
-  description: string[];
+  description: ReactNode[];
   price: string;
   amount: number;
   imageURL: string;
@@ -39,8 +39,12 @@ const courses: ICourse[] = [
     courseID: "FSWD123",
     title: "LaunchPad Nodejs & SpringBoot",
     description: [
-      "Learn HTML, CSS, JavaScript, React, and Node.js",
-      "Duration: 13-15 months",
+      <span key={0}>
+        Learn Java, DSA with Java, frontend (HTML, CSS, JS), <br />
+        backend development with Node.js and Spring Boot,
+        <br /> and React.js.
+      </span>,
+      "Duration: 11-15 months",
       "Fully online",
     ],
     price: "70,000",
@@ -53,7 +57,7 @@ const courses: ICourse[] = [
     title: "MERN Stack Development",
     description: [
       "Learn MongoDB, Express.js, React, and Node.js",
-      "Duration: 5 months",
+      "Duration: 11 months",
       "Fully online",
     ],
     price: "40,000",
@@ -65,8 +69,11 @@ const courses: ICourse[] = [
     courseID: "SBL789",
     title: "FullStack Launchpad (Spring Boot)",
     description: [
-      "Learn Java, Spring Boot, and modern front-end tools",
-      "Duration: 5 months",
+      <span key={2}>
+        Learn Java, DSA with Java, frontend (HTML, CSS, JS),
+        <br /> backend development with Spring Boot, and React.js.
+      </span>,
+      "Duration: 11 months",
       "Fully online",
     ],
     price: "60,000",
@@ -78,8 +85,11 @@ const courses: ICourse[] = [
     courseID: "NJL012",
     title: "FullStack Launchpad (Node.js)",
     description: [
-      "Learn Node.js, Express, and modern front-end tools",
-      "Duration: 10-15 months",
+      <span key={3}>
+        Learn Java, DSA with Java, frontend (HTML, CSS, JS),
+        <br /> backend development with Node.js and React.js.
+      </span>,
+      "Duration: 11 months",
       "Fully online",
     ],
     price: "60,000",
@@ -91,8 +101,13 @@ const courses: ICourse[] = [
     courseID: "PYTH345",
     title: "LaunchPad Python & Nodejs",
     description: [
-      "Learn Python for web, data, and automation",
+      <span key={4}>
+        Learn Python, DSA with python, frontend
+        <br /> (HTML, CSS, JS),
+        <br /> backend development with Node.js and React.js.
+      </span>,
       "Beginner to advanced concepts",
+      "Duration: 11 months",
       "Fully online",
     ],
     price: "60,000",
@@ -269,7 +284,7 @@ const Courses = ({ user }: { user: IUser }) => {
                     flexDirection={"column"}
                     gap={"10px"}
                   >
-                    {course?.description.map((desc: string) => (
+                    {course?.description.map((desc: ReactNode) => (
                       <Box
                         key={uuidv4()}
                         sx={{
@@ -352,9 +367,7 @@ const Courses = ({ user }: { user: IUser }) => {
                     }}
                     variant="contained"
                     size="small"
-                    onClick={() =>
-                      payNowHandler(course.amount, course.description[0])
-                    }
+                    onClick={() => payNowHandler(course.amount, course.title)}
                   >
                     Buy Now
                   </Button>
