@@ -36,8 +36,8 @@ const Offering = () => {
     {
       logoBgColor: "#CCE3FF",
       logo: "/images/intern-icon.png",
-      head: "Paid Internship",
-      desc: "Your career secured: Paid internships or your money back!",
+      head: "Certificate & Internship",
+      desc: "Receive a course completion certificate and a guaranteed paid internship to kickstart your career!",
     },
     {
       logoBgColor: "#C7FFEC",
