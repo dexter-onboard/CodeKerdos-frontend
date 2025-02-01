@@ -1,4 +1,4 @@
-// File: /Users/sudhendra/Documents/CodeKerdos/codeKerdos-frontend-main/codekerdos-frontend/app/layout.tsx
+// File: C:\Users\cyber\OneDrive\Documents\GitHub\CodeKerdos-frontend\codekerdos-frontend\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
