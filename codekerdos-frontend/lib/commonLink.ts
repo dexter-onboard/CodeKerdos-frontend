@@ -55,8 +55,7 @@ export const codekerdosPPT: string =
 export const socialMediaLinks = {
   facebook:
     "https://www.facebook.com/people/CodeKerdos/61569706247481/?mibextid=ZbWKwL",
-  instagram:
-    "https://www.instagram.com/code_kerdos_/profilecard/?igsh=MTZlbnQ3dWxoZmJ4Mg==",
+  instagram: "https://www.instagram.com/codekerdos/?hl=en",
   youtube: "https://youtube.com/@codekerdos?si=Pppi6GLKEEG3G0bx",
   linkedin: "https://www.linkedin.com/company/codekerdos/",
 };

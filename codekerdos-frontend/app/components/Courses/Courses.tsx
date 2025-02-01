@@ -20,7 +20,11 @@ import "./courses.css";
 import dayjs from "dayjs";
 import { openPDFLink } from "@/lib/commonFunctions";
 import { brochureLinks, broucherDownloadFormURL } from "@/lib/commonLink";
-import { textInputStyles } from "@/lib/commonStyles";
+import {
+  buyNowButtonStyling,
+  cardScrollStyling,
+  textInputStyles,
+} from "@/lib/commonStyles";
 import payNow from "./PaymentScript";
 import { IUser } from "@/app/page";
 
@@ -44,6 +48,9 @@ const courses: ICourse[] = [
         backend development with Node.js and Spring Boot,
         <br /> and React.js.
       </span>,
+      <span key={0}>
+        AI/ML integration in real-world projects <br /> through live sessions.
+      </span>,
       "Duration: 11-15 months",
       "Fully online",
     ],
@@ -57,6 +64,9 @@ const courses: ICourse[] = [
     title: "MERN Stack Development",
     description: [
       "Learn MongoDB, Express.js, React, and Node.js",
+      <span key={0}>
+        AI/ML integration in real-world projects <br /> through live sessions.
+      </span>,
       "Duration: 11 months",
       "Fully online",
     ],
@@ -73,6 +83,9 @@ const courses: ICourse[] = [
         Learn Java, DSA with Java, frontend (HTML, CSS, JS),
         <br /> backend development with Spring Boot, and React.js.
       </span>,
+      <span key={0}>
+        AI/ML integration in real-world projects <br /> through live sessions.
+      </span>,
       "Duration: 11 months",
       "Fully online",
     ],
@@ -88,6 +101,9 @@ const courses: ICourse[] = [
       <span key={3}>
         Learn Java, DSA with Java, frontend (HTML, CSS, JS),
         <br /> backend development with Node.js and React.js.
+      </span>,
+      <span key={0}>
+        AI/ML integration in real-world projects <br /> through live sessions.
       </span>,
       "Duration: 11 months",
       "Fully online",
@@ -107,6 +123,9 @@ const courses: ICourse[] = [
         (HTML, CSS, JS), backend development with
         <br />
         Node.js and React.js.
+      </span>,
+      <span key={0}>
+        AI/ML integration in real-world projects <br /> through live sessions.
       </span>,
       "Beginner to advanced concepts",
       "Duration: 11 months",
@@ -257,18 +276,23 @@ const Courses = ({ user }: { user: IUser }) => {
                     lg: "500px",
                   },
                   borderRadius: "8px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  minHeight: "500px",
                 }}
               >
                 <CardMedia
                   sx={{
                     height: 200,
-                    width: { xs: "100%", sm: "400px", md: "425px" },
+                    // width: { xs: "100%", sm: "400px", md: "425px" },
+                    width: "100%",
                   }}
                   image={course.imageURL}
                   title={course.title}
                 />
 
-                <CardContent>
+                <CardContent sx={{ flexGrow: 1 }}>
                   <Typography
                     className="font-class"
                     fontSize={{ xs: "18px", sm: "20px" }}
@@ -285,6 +309,8 @@ const Courses = ({ user }: { user: IUser }) => {
                     display={"flex"}
                     flexDirection={"column"}
                     gap={"10px"}
+                    padding={1}
+                    sx={cardScrollStyling}
                   >
                     {course?.description.map((desc: ReactNode) => (
                       <Box
@@ -362,12 +388,9 @@ const Courses = ({ user }: { user: IUser }) => {
                     ₹{course.price}
                   </Typography>
                   <Button
-                    sx={{
-                      backgroundColor: "#1B99D4",
-                      textTransform: "capitalize",
-                      padding: { xs: "6px 25px", sm: "8px 30px" },
-                    }}
+                    sx={buyNowButtonStyling}
                     variant="contained"
+                    className="font-class"
                     size="small"
                     onClick={() => payNowHandler(course.amount, course.title)}
                   >

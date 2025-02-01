@@ -24,3 +24,31 @@ export const textInputStyles = {
     fontFamily: "Inter, sans-serif",
   },
 };
+
+export const cardScrollStyling = {
+  maxHeight: "120px",
+  overflowY: "auto",
+  "&::-webkit-scrollbar": {
+    width: "6px",
+    backgroundColor: "#F5F5F5",
+  },
+  "&::-webkit-scrollbar-track": {
+    borderRadius: "10px",
+    backgroundColor: "#F5F5F5",
+    boxShadow: "inset 0 0 6px rgba(0,0,0,0.3)",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    borderRadius: "10px",
+    backgroundColor: "#1B99D4",
+    boxShadow: "inset 0 0 6px rgba(0,0,0,0.3)",
+  },
+};
+
+export const buyNowButtonStyling = {
+  textTransform: "capitalize",
+  fontWeight: "500",
+  fontSize: "16px",
+  color: "#fff",
+  backgroundColor: "#1B99D4",
+  padding: "6px 16px",
+};

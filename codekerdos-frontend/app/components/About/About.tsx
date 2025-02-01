@@ -65,11 +65,10 @@ const About = () => {
                 // maxWidth: "90%", // Prevents stretching
               }}
             >
-              At CodeKerdos, we make coding education accessible and inclusive
-              for college students through live, interactive webinars in Hindi
-              and English. With 12/6 personalized support and hands-on learning,
-              we empower students of all skill levels to master coding
-              confidently.
+              CodeKerdos makes coding education accessible to college students
+              and professionals through live, interactive webinars in Hindi and
+              English. With 12/6 personalized support and hands-on learning, we
+              help learners of all skill levels master coding confidently.
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -81,14 +80,12 @@ const About = () => {
                 fontWeight: "300",
                 lineHeight: { xs: "28px", sm: "32px", md: "36px" },
                 textAlign: { xs: "center", md: "left" },
-                // maxWidth: "90%",
               }}
             >
-              Our unique internship placement program provides real-world
-              experience, helping students kickstart successful tech careers.
-              Committed to transparency and personalized guidance, we ensure
-              every learner receives the mentorship and resources needed to
-              overcome challenges and achieve their dreams.
+              Beyond courses, we offer paid, guaranteed internships, providing
+              real-world experience and industry connections. Our practical
+              approach, mentorship, and transparent guidance empower learners to
+              overcome challenges and build successful tech careers.
             </Typography>
           </Grid>
         </Grid>

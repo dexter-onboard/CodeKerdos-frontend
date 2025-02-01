@@ -122,10 +122,13 @@ const HomePage = () => {
             }}
             className="font-class"
           >
-            Empowering students and professionals with expert-led
+            At Codekerdos, we equip learners with expert-led courses, hands-on
+            projects, and AI-integrated web development, empowering them with
+            real-world skills to excel in their careers.
+            {/* Empowering students and professionals with expert-led
             <br />
             courses, real-world projects, and the skills to thrive in a <br />{" "}
-            digital world.
+            digital world. */}
           </Typography>
 
           <Grid container>

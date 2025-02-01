@@ -60,7 +60,7 @@ const Offering = () => {
     {
       logoBgColor: "#18427940",
       logo: "/images/support-icon.png",
-      head: "Quick Technical Support",
+      head: "Quick Technical Support 12 X 6",
       desc: "Connect to an instructor within 15 minutes for any coding doubts.",
     },
     {

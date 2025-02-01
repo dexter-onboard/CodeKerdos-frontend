@@ -44,7 +44,7 @@ const Testimonials = () => {
         "The live classes have been incredibly helpful for me! Having a great instructor guiding us in real-time made all the difference. It allowed me to ask questions, get instant feedback, and truly understand the concepts. This interactive approach is so much better than just watching recorded lectures",
       name: "Mayank Jain",
       rating: 5,
-      image: "/public/images/mayank-avatar.png",
+      image: "/images/mayank-avatar.png",
       linkedInLink: "",
     },
 

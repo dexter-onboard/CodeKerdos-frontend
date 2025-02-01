@@ -29,7 +29,11 @@ import { useState } from "react";
 import { openPDFLink } from "@/lib/commonFunctions";
 import { brochureLinks, broucherDownloadFormURL } from "@/lib/commonLink";
 import SwiperCore from "swiper";
-import { textInputStyles } from "@/lib/commonStyles";
+import {
+  buyNowButtonStyling,
+  cardScrollStyling,
+  textInputStyles,
+} from "@/lib/commonStyles";
 import dayjs from "dayjs";
 import payNow from "./PaymentScript";
 import { IUser } from "@/app/page";
@@ -311,9 +315,12 @@ const ShortCourses = ({ user }: { user: IUser }) => {
                     lg: "350px",
                     xl: "430px",
                   },
-                  height: "450px",
+                  height: "430px",
                   boxShadow: 3,
                   borderRadius: "8px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
                 }}
               >
                 <CardMedia
@@ -323,27 +330,28 @@ const ShortCourses = ({ user }: { user: IUser }) => {
                   alt={shortCourse.title}
                 />
                 <CardContent>
-                  <Typography
-                    className="font-class"
-                    fontWeight="500"
-                    fontSize={"20px"}
-                  >
-                    {shortCourse.title}
-                  </Typography>
-                  <Typography
-                    className="font-class"
-                    fontWeight="400"
-                    fontSize={"14px"}
-                    color="#5B6165"
-                    sx={{ display: "flex", alignItems: "start", mt: 2 }}
-                  >
-                    <SchoolOutlinedIcon
-                      fontSize="small"
-                      sx={{ mr: 1, color: "#5B6165" }}
-                    />
-                    {shortCourse.description}
-                  </Typography>
-
+                  <Box sx={{ ...cardScrollStyling, maxHeight: "140px" }}>
+                    <Typography
+                      className="font-class"
+                      fontWeight="500"
+                      fontSize={"20px"}
+                    >
+                      {shortCourse.title}
+                    </Typography>
+                    <Typography
+                      className="font-class"
+                      fontWeight="400"
+                      fontSize={"14px"}
+                      color="#5B6165"
+                      sx={{ display: "flex", alignItems: "start", mt: 2 }}
+                    >
+                      <SchoolOutlinedIcon
+                        fontSize="small"
+                        sx={{ mr: 1, color: "#5B6165" }}
+                      />
+                      {shortCourse.description}
+                    </Typography>
+                  </Box>
                   <Button
                     className="font-class"
                     sx={{
@@ -373,14 +381,7 @@ const ShortCourses = ({ user }: { user: IUser }) => {
                   <Button
                     className="font-class"
                     variant="contained"
-                    sx={{
-                      textTransform: "capitalize",
-                      fontWeight: "500",
-                      fontSize: "16px",
-                      color: "#fff",
-                      backgroundColor: "#1B99D4",
-                      padding: "6px 16px",
-                    }}
+                    sx={buyNowButtonStyling}
                     onClick={() =>
                       payNowHandler(shortCourse.amount, shortCourse.description)
                     }
