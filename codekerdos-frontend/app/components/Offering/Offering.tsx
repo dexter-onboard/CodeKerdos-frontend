@@ -78,11 +78,15 @@ const Offering = () => {
   ];
 
   return (
-    <Box p={8} mt={6}>
+    <Box p={{ xs: 4, sm: 6, md: 8 }} mt={6}>
       <Box textAlign={"center"}>
         <Typography
           className="font-class"
-          sx={{ fontSize: "20px", color: "#5B6165", fontWeight: "600" }}
+          sx={{
+            fontSize: { xs: "16px", sm: "18px", md: "20px" },
+            color: "#5B6165",
+            fontWeight: "600",
+          }}
           gutterBottom
           variant="h6"
           component="div"
@@ -92,12 +96,15 @@ const Offering = () => {
 
         <Typography
           className="font-class"
-          sx={{ fontSize: "42px", fontWeight: "700" }}
+          sx={{
+            fontSize: { xs: "28px", sm: "36px", md: "42px" },
+            fontWeight: "700",
+          }}
           gutterBottom
           variant="h1"
           component="div"
-          mb={6}
-          mt={2}
+          mb={{ xs: 4, md: 6 }}
+          mt={{ xs: 1, md: 2 }}
         >
           Career-Focused{" "}
           <span style={{ color: "#1B99D4" }}>Coding Education</span>
@@ -110,12 +117,12 @@ const Offering = () => {
         alignItems={"center"}
       >
         {offerings.map((item: IOffering) => (
-          <Grid item xs={4} key={uuidv4()}>
+          <Grid item xs={12} sm={6} md={4} key={uuidv4()}>
             <Card
               sx={{
                 borderRadius: "10px",
                 width: "auto",
-                height: 230,
+                height: { xs: "auto", md: 230 },
                 backgroundColor: "#F8FBFB",
                 boxShadow:
                   "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
@@ -140,7 +147,7 @@ const Offering = () => {
 
                   <Typography
                     className="font-class"
-                    sx={{ fontSize: "20px" }}
+                    sx={{ fontSize: { xs: "18px", md: "20px" } }}
                     gutterBottom
                     variant="h6"
                     component="div"
@@ -150,7 +157,10 @@ const Offering = () => {
                   <Typography
                     className="font-class"
                     variant="body2"
-                    sx={{ color: "#5B6165", fontSize: "16px" }}
+                    sx={{
+                      color: "#5B6165",
+                      fontSize: { xs: "14px", md: "16px" },
+                    }}
                     mt={2}
                   >
                     {item.desc}

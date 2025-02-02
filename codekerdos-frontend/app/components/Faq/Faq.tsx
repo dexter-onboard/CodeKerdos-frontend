@@ -104,8 +104,10 @@ const Faq = () => {
         <Grid container>
           <Grid
             item
-            xs={4}
-            display={"flex"}
+            xs={0}
+            sm={0}
+            md={4}
+            display={{ xs: "none", md: "flex" }}
             justifyContent={"center"}
             alignItems={"center"}
           >
@@ -115,7 +117,7 @@ const Faq = () => {
               alt="faq-banner"
             />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={12} md={8}>
             {faqData.map((faq: IFaqData, idx: number) => (
               <Box key={uuidv4()} mt={2}>
                 <Accordion>
@@ -127,7 +129,7 @@ const Faq = () => {
                     <Typography
                       className="font-class"
                       sx={{
-                        fontSize: "18px",
+                        fontSize: { xs: "14px", sm: "16px", md: "18px" },
                         color: "#1E1E1EDE",
                         fontWeight: "500",
                       }}
@@ -140,7 +142,7 @@ const Faq = () => {
                     <Typography
                       className="font-class"
                       sx={{
-                        fontSize: "18px",
+                        fontSize: { xs: "14px", sm: "16px", md: "18px" },
                         color: "#1E1E1EDE",
                         fontWeight: "500",
                       }}

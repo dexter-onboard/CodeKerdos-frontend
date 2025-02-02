@@ -37,25 +37,25 @@ export default function Home() {
     studentInfo: { name: "", username: "", phoneNumber: "" },
   });
 
-  if (isMobileOrTablet) {
-    return (
-      <Box
-        sx={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#10172A",
-          color: "white",
-          textAlign: "center",
-        }}
-      >
-        <Typography className="font-class" variant="h5">
-          Under Construction. Will be up soon!
-        </Typography>
-      </Box>
-    );
-  }
+  // if (isMobileOrTablet) {
+  //   return (
+  //     <Box
+  //       sx={{
+  //         height: "100vh",
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         backgroundColor: "#10172A",
+  //         color: "white",
+  //         textAlign: "center",
+  //       }}
+  //     >
+  //       <Typography className="font-class" variant="h5">
+  //         Under Construction. Will be up soon!
+  //       </Typography>
+  //     </Box>
+  //   );
+  // }
 
   return (
     <Box>
@@ -84,7 +84,7 @@ export default function Home() {
       </Box>
       <Footer />
       <WhatsappButton />
-      <BookFreeWebinarPopover />
+      {/* <BookFreeWebinarPopover /> */}
     </Box>
   );
 }

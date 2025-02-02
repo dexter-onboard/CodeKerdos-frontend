@@ -17,7 +17,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Navigation } from "swiper/modules";
 import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
-import { navButtonStyle } from "@/lib/commonStyles";
+import { cardScrollStyling, navButtonStyle } from "@/lib/commonStyles";
 import SwiperCore from "swiper";
 
 interface ITestimonial {
@@ -110,11 +110,15 @@ const Testimonials = () => {
   };
 
   return (
-    <Box mt={12}>
+    <Box mt={{ xs: 6, md: 12 }} px={{ xs: 2, md: 5 }}>
       <Box textAlign={"center"}>
         <Typography
           className="font-class"
-          sx={{ fontSize: "20px", color: "#5B6165", fontWeight: "600" }}
+          sx={{
+            fontSize: { xs: "16px", md: "20px" },
+            color: "#5B6165",
+            fontWeight: "600",
+          }}
           gutterBottom
           variant="h6"
           component="div"
@@ -124,11 +128,14 @@ const Testimonials = () => {
 
         <Typography
           className="font-class"
-          sx={{ fontSize: "42px", fontWeight: "700" }}
+          sx={{
+            fontSize: { xs: "28px", sm: "32px", md: "42px" },
+            fontWeight: "700",
+          }}
           gutterBottom
           variant="h1"
           component="div"
-          mb={6}
+          mb={{ xs: 4, md: 6 }}
           mt={2}
         >
           What Our <span style={{ color: "#1B99D4" }}>Students Says</span>
@@ -158,48 +165,45 @@ const Testimonials = () => {
           <ArrowForwardIosIcon />
         </IconButton>
         <Swiper
-          slidesPerView={4}
+          slidesPerView={1}
           onSwiper={setSwiperReftestimonial}
           navigation={{
             nextEl: ".testimonial-swiper-next",
             prevEl: ".testimonial-swiper-prev",
           }}
+          loop={false}
           modules={[Navigation]}
+          slidesPerGroup={1}
           className="testimonials-swiper"
           breakpoints={{
-            1500: {
-              slidesPerView: 4,
-            },
-            1440: {
-              slidesPerView: 3,
-            },
-            1366: {
-              slidesPerView: 3,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-            768: {
-              slidesPerView: 1,
-            },
+            1024: { slidesPerView: 2 },
+            768: { slidesPerView: 2 },
+            640: { slidesPerView: 1 },
+            0: { slidesPerView: 1 },
           }}
         >
           {testimonials.map((testimonial: ITestimonial) => (
-            <SwiperSlide style={{ padding: "2.5rem" }} key={uuidv4()}>
+            <SwiperSlide key={uuidv4()}>
               <Card
                 sx={{
-                  maxWidth: 370,
-                  width: "auto",
+                  maxWidth: { xs: 358, md: 370 },
+                  width: { xs: 358, md: 370 },
                   height: "500px",
                   borderRadius: "8px",
                   boxShadow:
                     "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
-                  padding: 2,
+                  padding: { xs: 2, md: 3 },
                   textAlign: "center",
                   backgroundColor: "#F8FBFB",
                 }}
               >
-                <Box height={360}>
+                <Box
+                  sx={{
+                    ...cardScrollStyling,
+                    maxHeight: "400px",
+                    height: "400px",
+                  }}
+                >
                   <Box mb={2}>
                     <Image
                       width="20"
@@ -213,11 +217,11 @@ const Testimonials = () => {
                     component="blockquote"
                     className="font-class"
                     sx={{
-                      fontSize: "18px",
+                      fontSize: { xs: "16px", md: "18px" },
                       color: "#5B6165",
                       fontWeight: "500",
                     }}
-                    lineHeight={"36px"}
+                    lineHeight={"30px"}
                     textAlign={"left"}
                     mb={4}
                   >
@@ -239,7 +243,11 @@ const Testimonials = () => {
                   />
                   <Box ml={2} textAlign="left">
                     <Rating value={testimonial.rating} readOnly size="small" />
-                    <Typography variant="subtitle1" fontWeight="bold">
+                    <Typography
+                      variant="subtitle1"
+                      fontWeight="bold"
+                      sx={{ fontSize: { xs: "14px", md: "16px" } }}
+                    >
                       {testimonial.name}
                     </Typography>
                   </Box>

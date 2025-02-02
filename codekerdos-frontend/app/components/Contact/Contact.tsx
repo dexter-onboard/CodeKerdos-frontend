@@ -59,9 +59,9 @@ const Contact = () => {
   };
 
   return (
-    <Box mt={10} px={8}>
-      <Grid container>
-        <Grid item xs={6}>
+    <Box mt={10} px={{ xs: 2, sm: 3, md: 8 }}>
+      <Grid container spacing={4}>
+        <Grid item xs={0} sm={6} display={{ xs: "none", sm: "block" }}>
           <Box
             sx={{
               position: "relative",
@@ -158,7 +158,7 @@ const Contact = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={6} paddingRight={10} mt={4}>
+        <Grid item xs={12} sm={6} mt={{ xs: 0, sm: 0, md: 4 }}>
           <Box
             sx={{
               margin: "auto",
